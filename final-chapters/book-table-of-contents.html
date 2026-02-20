@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>전체 목차 | 팹리스 검증 엔지니어가 되기 위한 UVM 완전정복</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --blue: #2563eb;
+      --blue-light: #eff6ff;
+      --blue-dark: #1e40af;
+      --green: #16a34a;
+      --green-light: #ecfdf5;
+      --green-dark: #166534;
+      --purple: #7c3aed;
+      --purple-light: #f5f3ff;
+      --purple-dark: #5b21b6;
+      --text: #1a1a2e;
+      --text-sub: #475569;
+      --text-muted: #94a3b8;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --border: #e2e8f0;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* === HERO === */
+    .hero {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      color: white;
+      text-align: center;
+      padding: 60px 24px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 70% 50%, rgba(124, 58, 237, 0.15) 0%, transparent 50%);
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 4px 16px;
+      font-size: 0.8em;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      color: #cbd5e1;
+    }
+
+    .hero h1 {
+      font-size: 2.2em;
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: #60a5fa;
+    }
+
+    .hero-sub {
+      font-size: 1.05em;
+      color: #94a3b8;
+      margin-bottom: 32px;
+      font-weight: 300;
+    }
+
+    /* Stats Cards */
+    .stats {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 14px 22px;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 1.6em;
+      font-weight: 700;
+      color: #f1f5f9;
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 0.75em;
+      color: #64748b;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    /* === MAIN CONTENT === */
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+    }
+
+    /* === PART SECTION === */
+    .part-section {
+      margin-bottom: 48px;
+    }
+
+    .part-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 8px;
+      padding-bottom: 12px;
+      border-bottom: 3px solid var(--border);
+    }
+
+    .part-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 18px;
+      border-radius: 24px;
+      font-size: 0.85em;
+      font-weight: 700;
+      color: white;
+      white-space: nowrap;
+      letter-spacing: 0.3px;
+    }
+
+    .part-header h2 {
+      font-size: 1.4em;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .part-desc {
+      font-size: 0.92em;
+      color: var(--text-sub);
+      margin-bottom: 20px;
+      padding-left: 4px;
+      font-weight: 400;
+    }
+
+    /* Part colors */
+    .part-1 .part-badge {
+      background: var(--blue);
+    }
+
+    .part-1 .part-header {
+      border-bottom-color: var(--blue);
+    }
+
+    .part-1 .ch-card {
+      border-left-color: var(--blue);
+    }
+
+    .part-1 .ch-num {
+      color: var(--blue);
+    }
+
+    .part-1 .ch-toggle:hover {
+      color: var(--blue);
+    }
+
+    .part-2 .part-badge {
+      background: var(--green);
+    }
+
+    .part-2 .part-header {
+      border-bottom-color: var(--green);
+    }
+
+    .part-2 .ch-card {
+      border-left-color: var(--green);
+    }
+
+    .part-2 .ch-num {
+      color: var(--green);
+    }
+
+    .part-2 .ch-toggle:hover {
+      color: var(--green);
+    }
+
+    .part-3 .part-badge {
+      background: var(--purple);
+    }
+
+    .part-3 .part-header {
+      border-bottom-color: var(--purple);
+    }
+
+    .part-3 .ch-card {
+      border-left-color: var(--purple);
+    }
+
+    .part-3 .ch-num {
+      color: var(--purple);
+    }
+
+    .part-3 .ch-toggle:hover {
+      color: var(--purple);
+    }
+
+    /* === CHAPTER CARD === */
+    .ch-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid #ccc;
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .ch-card:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .ch-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .ch-num {
+      font-size: 1.5em;
+      font-weight: 900;
+      min-width: 48px;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+
+    .ch-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .ch-title-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .ch-title {
+      font-size: 1.05em;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .ch-title:hover {
+      text-decoration: underline;
+    }
+
+    .ch-meta {
+      font-size: 0.78em;
+      color: var(--text-muted);
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .ch-keywords {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      margin-top: 5px;
+    }
+
+    .kw-tag {
+      display: inline-block;
+      font-size: 0.7em;
+      font-weight: 500;
+      padding: 1px 8px;
+      border-radius: 10px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      color: var(--text-sub);
+      font-family: 'Fira Code', 'JetBrains Mono', monospace;
+    }
+
+    .ch-toggle {
+      font-size: 1.2em;
+      color: var(--text-muted);
+      transition: transform 0.25s, color 0.15s;
+      flex-shrink: 0;
+      width: 28px;
+      text-align: center;
+    }
+
+    .ch-card.open .ch-toggle {
+      transform: rotate(180deg);
+    }
+
+    /* === CHAPTER BODY (sections) === */
+    .ch-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .ch-card.open .ch-body {
+      max-height: 2000px;
+    }
+
+    .ch-sections {
+      padding: 0 20px 16px 82px;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-item {
+      padding: 5px 0;
+      font-size: 0.92em;
+      font-weight: 600;
+      color: var(--text);
+      list-style: none;
+    }
+
+    .section-item::before {
+      content: none;
+    }
+
+    .subsection-list {
+      list-style: none;
+      padding-left: 20px;
+    }
+
+    .subsection-item {
+      padding: 2px 0;
+      font-size: 0.85em;
+      font-weight: 400;
+      color: var(--text-sub);
+    }
+
+    .subsection-item::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+      margin-right: 8px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+    }
+
+    /* === DASHBOARD === */
+    .dashboard {
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 3px solid var(--border);
+    }
+
+    .dashboard h2 {
+      font-size: 1.3em;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .chart-container {
+      margin-bottom: 40px;
+    }
+
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+      font-size: 0.82em;
+    }
+
+    .bar-label {
+      width: 100px;
+      text-align: right;
+      font-weight: 500;
+      color: var(--text-sub);
+      flex-shrink: 0;
+    }
+
+    .bar-track {
+      flex: 1;
+      height: 22px;
+      background: var(--bg-alt);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 8px;
+      font-size: 0.85em;
+      font-weight: 600;
+      color: white;
+      transition: width 0.8s ease;
+    }
+
+    .bar-fill.p1 {
+      background: linear-gradient(90deg, #3b82f6, #2563eb);
+    }
+
+    .bar-fill.p2 {
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+    }
+
+    .bar-fill.p3 {
+      background: linear-gradient(90deg, #a78bfa, #7c3aed);
+    }
+
+    /* Learning Path SVG */
+    .learning-path {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    .learning-path h3 {
+      font-size: 1.1em;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    /* === FOOTER === */
+    .footer {
+      text-align: center;
+      padding: 24px;
+      margin-top: 40px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.82em;
+    }
+
+    /* Expand/Collapse All */
+    .controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .ctrl-btn {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 0.8em;
+      font-weight: 500;
+      color: var(--text-sub);
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+
+    .ctrl-btn:hover {
+      background: var(--border);
+      color: var(--text);
+    }
+
+    /* === PRINT === */
+    @media print {
+      .hero {
+        background: white !important;
+        color: black !important;
+        padding: 20px 0;
+      }
+
+      .hero::before {
+        display: none;
+      }
+
+      .hero h1,
+      .hero h1 em {
+        color: black !important;
+      }
+
+      .hero-sub,
+      .hero-badge {
+        color: #666 !important;
+      }
+
+      .stat-card {
+        border-color: #ccc !important;
+        background: white !important;
+      }
+
+      .stat-num {
+        color: black !important;
+      }
+
+      .ch-body {
+        max-height: none !important;
+      }
+
+      .ch-toggle,
+      .controls {
+        display: none !important;
+      }
+
+      .ch-card {
+        break-inside: avoid;
+      }
+
+      .footer {
+        display: none;
+      }
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 640px) {
+      .hero {
+        padding: 40px 16px 32px;
+      }
+
+      .hero h1 {
+        font-size: 1.5em;
+      }
+
+      .stats {
+        gap: 8px;
+      }
+
+      .stat-card {
+        padding: 10px 14px;
+        min-width: 90px;
+      }
+
+      .stat-num {
+        font-size: 1.3em;
+      }
+
+      .content {
+        padding: 24px 12px 40px;
+      }
+
+      .ch-sections {
+        padding-left: 20px;
+      }
+
+      .ch-num {
+        font-size: 1.2em;
+        min-width: 36px;
+      }
+
+      .bar-label {
+        width: 70px;
+        font-size: 0.75em;
+      }
+    }
+  
+    .ch-sections a { text-decoration: none; color: inherit; transition: color 0.15s; }
+    .ch-sections a:hover { color: var(--accent); }
+    
+  </style>
+</head>
+
+<body>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">COMPLETE BOOK TABLE OF CONTENTS</div>
+      <h1>팹리스 검증 엔지니어가 되기 위한<br><em>UVM 완전정복</em></h1>
+      <p class="hero-sub">이론 30% : 실습 70% &mdash; 초보자부터 취업까지 완전정복</p>
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-num">15</div>
+          <div class="stat-label">Chapters</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Parts</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">18,035</div>
+          <div class="stat-label">Lines</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">66</div>
+          <div class="stat-label">SVG Diagrams</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">484</div>
+          <div class="stat-label">Sections</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MAIN ==================== -->
+  <main class="content">
+
+    <div class="controls">
+      <button class="ctrl-btn" onclick="toggleAll(true)">모두 펼치기</button>
+      <button class="ctrl-btn" onclick="toggleAll(false)">모두 접기</button>
+    </div>
+
+    <!-- ========== PART 1 ========== -->
+    <section class="part-section part-1">
+      <div class="part-header">
+        <span class="part-badge">Part 1</span>
+        <h2>시작하기</h2>
+      </div>
+      <p class="part-desc">UVM의 기초 개념을 이해하고, 첫 번째 UVM 테스트벤치를 직접 작성합니다. &mdash; 이 파트를 끝내면 UVM 테스트벤치를 스스로 빌드하고 실행할 수 있습니다.
+      </p>
+
+      <!-- Ch.1 -->
+      <div class="ch-card open">
+        <div class="ch-header" onclick="toggleCard(this)">
+          <span class="ch-num">01</span>
+          <div class="ch-info">
+            <div class="ch-title-row">
+              <a class="ch-title" href="chapter-01-final.html">UVM 소개</a>
+              <span class="ch-meta">944줄 &middot; SVG 8</span>
+            </div>
+            <div class="ch-keywords">
+              <span class="kw-tag">UVM</span><span class="kw-tag">Testbench</span><span
+                class="kw-tag">Verification</span>
+            </div>
+          </div>
+          <span class="ch-toggle">&#9660;</span>
+        </div>
+        <div class="ch-body">
+          <div class="ch-sections">
+<ul style="list-style:none;padding:0">
+          <li class="section-item"><a href="chapter-01-final.html#1-1-uvm이란-무엇인가">1.1 UVM이란 무엇인가?</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-01-final.html#1-1-1-검증이-왜-필요한가">1.1.1 검증이 왜 필요한가?</a></li>
+              <li class="subsection-item"><a href="chapter-01-final.html#1-1-2-전통적-검증-vs-uvm-검증">1.1.2 전통적 검증 vs UVM 검증</a></li>
+              <li class="subsection-item"><a href="chapter-01-final.html#1-1-3-uvm의-등장">1.1.3 UVM의 등장</a></li>
+              <li class="subsection-item"><a href="chapter-01-final.html#1-1-4-uvm-테스트벤치-testbench-구조-한눈에-보기">1.1.4 UVM 테스트벤치(Testbench) 구조 한눈에 보기</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-01-final.html#1-2-왜-uvm을-배워야-하는가">1.2 왜 UVM을 배워야 하는가?</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-01-final.html#1-2-1-취업-시장에서의-uvm">1.2.1 취업 시장에서의 UVM</a></li>
+              <li class="subsection-item"><a href="chapter-01-final.html#1-2-2-uvm을-배우면-얻는-것">1.2.2 UVM을 배우면 얻는 것</a></li>
+              <li class="subsection-item"><a href="chapter-01-final.html#1-2-3-이-책의-학습-로드맵">1.2.3 이 책의 학습 로드맵</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-01-final.html#1-3-실습-환경-구성">1.3 실습 환경 구성</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-01-final.html#1-3-1-필요한-도구들">1.3.1 필요한 도구들</a></li>
+              <li class="subsection-item"><a href="chapter-01-final.html#1-3-2-eda-playground-시작하기">1.3.2 EDA Playground 시작하기</a></li>
+              <li class="subsection-item"><a href="chapter-01-final.html#1-3-3-로컬-환경-설정-선택사항">1.3.3 로컬 환경 설정 (선택사항)</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-01-final.html#1-4-첫-번째-uvm-예제">1.4 첫 번째 UVM 예제</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-01-final.html#1-4-1-quot-hello-uvm-quot-가장-간단한-uvm-프로그램">1.4.1 &quot;Hello UVM!&quot; - 가장 간단한 UVM 프로그램</a></li>
+              <li class="subsection-item"><a href="chapter-01-final.html#1-4-2-코드-분석-한-줄-한-줄-이해하기">1.4.2 코드 분석: 한 줄 한 줄 이해하기</a></li>
+              <li class="subsection-item"><a href="chapter-01-final.html#1-4-3-실행-결과">1.4.3 실행 결과</a></li>
+              <li class="subsection-item"><a href="chapter-01-final.html#1-4-4-실습-직접-해보기">1.4.4 실습: 직접 해보기!</a></li>
+              <li class="subsection-item"><a href="chapter-01-final.html#1-4-5-예제-심화-간단한-트랜잭션-transaction-맛보기">1.4.5 예제 심화: 간단한 트랜잭션(Transaction) 맛보기</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-01-final.html#1-5-chapter-1-정리">1.5 Chapter 1 정리</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-01-final.html#핵심-요약">핵심 요약</a></li>
+              <li class="subsection-item"><a href="chapter-01-final.html#용어-정리">용어 정리</a></li>
+              <li class="subsection-item"><a href="chapter-01-final.html#셀프-체크-self-check">셀프 체크 (Self-Check)</a></li>
+              <li class="subsection-item"><a href="chapter-01-final.html#다음-chapter-미리보기">다음 Chapter 미리보기</a></li>
+            </ul>
+          </li>
+        </ul>
+</div>
+        </div>
+      </div>
+
+      <!-- Ch.2 -->
+      <div class="ch-card open">
+        <div class="ch-header" onclick="toggleCard(this)">
+          <span class="ch-num">02</span>
+          <div class="ch-info">
+            <div class="ch-title-row">
+              <a class="ch-title" href="chapter-02-final.html">환경 설정</a>
+              <span class="ch-meta">828줄 &middot; SVG 6</span>
+            </div>
+            <div class="ch-keywords">
+              <span class="kw-tag">EDA Playground</span><span class="kw-tag">Simulator</span><span
+                class="kw-tag">Questa</span>
+            </div>
+          </div>
+          <span class="ch-toggle">&#9660;</span>
+        </div>
+        <div class="ch-body">
+          <div class="ch-sections">
+<ul style="list-style:none;padding:0">
+          <li class="section-item"><a href="chapter-02-final.html#2-1-시뮬레이터란-무엇인가">2.1 시뮬레이터란 무엇인가?</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-02-final.html#2-1-1-시뮬레이터의-역할">2.1.1 시뮬레이터의 역할</a></li>
+              <li class="subsection-item"><a href="chapter-02-final.html#2-1-2-주요-상용-시뮬레이터">2.1.2 주요 상용 시뮬레이터</a></li>
+              <li class="subsection-item"><a href="chapter-02-final.html#2-1-3-무료-실습-환경-선택지">2.1.3 무료 실습 환경 선택지</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-02-final.html#2-2-eda-playground로-바로-시작하기">2.2 EDA Playground로 바로 시작하기</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-02-final.html#2-2-1-eda-playground란">2.2.1 EDA Playground란?</a></li>
+              <li class="subsection-item"><a href="chapter-02-final.html#2-2-2-eda-playground-설정-확인">2.2.2 EDA Playground 설정 확인</a></li>
+              <li class="subsection-item"><a href="chapter-02-final.html#2-2-3-첫-uvm-코드-실행하기-10분">2.2.3 첫 UVM 코드 실행하기 (10분)</a></li>
+              <li class="subsection-item"><a href="chapter-02-final.html#2-2-4-출력-결과-해석하기">2.2.4 출력 결과 해석하기</a></li>
+              <li class="subsection-item"><a href="chapter-02-final.html#2-2-5-자주-발생하는-에러와-해결법">2.2.5 자주 발생하는 에러와 해결법</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-02-final.html#2-3-uvm-코드-구조-이해하기">2.3 UVM 코드 구조 이해하기</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-02-final.html#2-3-1-uvm-프로그램의-기본-뼈대">2.3.1 UVM 프로그램의 기본 뼈대</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-02-final.html#2-4-실습-uvm-코드-수정해보기">2.4 실습: UVM 코드 수정해보기</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-02-final.html#2-4-1-실습-1-메시지-바꿔보기-쉬움">2.4.1 실습 1: 메시지 바꿔보기 (쉬움)</a></li>
+              <li class="subsection-item"><a href="chapter-02-final.html#2-4-2-실습-2-여러-페이즈-phase-체험하기-보통">2.4.2 실습 2: 여러 페이즈(Phase) 체험하기 (보통)</a></li>
+              <li class="subsection-item"><a href="chapter-02-final.html#2-4-3-실습-3-반복-테스트-만들기-보통">2.4.3 실습 3: 반복 테스트 만들기 (보통)</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-02-final.html#2-5-로컬-환경-설정-선택-사항">2.5 로컬 환경 설정 (선택 사항)</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-02-final.html#2-5-1-왜-로컬-환경이-필요할까">2.5.1 왜 로컬 환경이 필요할까?</a></li>
+              <li class="subsection-item"><a href="chapter-02-final.html#2-5-2-운영체제-준비">2.5.2 운영체제 준비</a></li>
+              <li class="subsection-item"><a href="chapter-02-final.html#2-5-3-questa-intel-fpga-edition-설치">2.5.3 Questa (Intel FPGA Edition) 설치</a></li>
+              <li class="subsection-item"><a href="chapter-02-final.html#2-5-4-uvm-라이브러리-설정">2.5.4 UVM 라이브러리 설정</a></li>
+              <li class="subsection-item"><a href="chapter-02-final.html#2-5-5-첫-로컬-컴파일-테스트">2.5.5 첫 로컬 컴파일 테스트</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-02-final.html#2-6-uvm-프로젝트-디렉토리-구조">2.6 UVM 프로젝트 디렉토리 구조</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-02-final.html#2-6-1-실무-표준-디렉토리-구조">2.6.1 실무 표준 디렉토리 구조</a></li>
+              <li class="subsection-item"><a href="chapter-02-final.html#2-6-2-각-디렉토리의-역할">2.6.2 각 디렉토리의 역할</a></li>
+              <li class="subsection-item"><a href="chapter-02-final.html#2-6-3-간단한-makefile-맛보기">2.6.3 간단한 Makefile 맛보기</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-02-final.html#2-7-체크포인트">2.7 체크포인트</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-02-final.html#셀프-체크">셀프 체크</a></li>
+              <li class="subsection-item"><a href="chapter-02-final.html#연습문제">연습문제</a></li>
+              <li class="subsection-item"><a href="chapter-02-final.html#다음-챕터-미리보기">다음 챕터 미리보기</a></li>
+            </ul>
+          </li>
+        </ul>
+</div>
+        </div>
+      </div>
+
+      <!-- Ch.3 -->
+      <div class="ch-card open">
+        <div class="ch-header" onclick="toggleCard(this)">
+          <span class="ch-num">03</span>
+          <div class="ch-info">
+            <div class="ch-title-row">
+              <a class="ch-title" href="chapter-03-final.html">SystemVerilog 핵심</a>
+              <span class="ch-meta">1,220줄 &middot; SVG 10</span>
+            </div>
+            <div class="ch-keywords">
+              <span class="kw-tag">Class</span><span class="kw-tag">Inheritance</span><span
+                class="kw-tag">Polymorphism</span><span class="kw-tag">Randomization</span>
+            </div>
+          </div>
+          <span class="ch-toggle">&#9660;</span>
+        </div>
+        <div class="ch-body">
+          <div class="ch-sections">
+<ul style="list-style:none;padding:0">
+          <li class="section-item"><a href="chapter-03-final.html#3-1-왜-systemverilog를-배워야-하는가">3.1 왜 SystemVerilog를 배워야 하는가?</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-03-final.html#3-1-1-verilog의-한계">3.1.1 Verilog의 한계</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#3-1-2-이-챕터에서-배울-것">3.1.2 이 챕터에서 배울 것</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-03-final.html#3-2-클래스-class-와-객체-object">3.2 클래스(Class)와 객체(Object)</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-03-final.html#3-2-1-module과-class의-차이">3.2.1 module과 class의 차이</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#3-2-2-첫-번째-클래스-만들기">3.2.2 첫 번째 클래스 만들기</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#3-2-3-클래스-vs-객체-붕어빵-비유">3.2.3 클래스 vs 객체: 붕어빵 비유</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#3-2-4-핸들-handle-클래스-변수의-정체">3.2.4 핸들(Handle) — 클래스 변수의 정체</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#3-2-5-null-참조-에러-가장-흔한-실수">3.2.5 null 참조 에러 — 가장 흔한 실수</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-03-final.html#3-3-상속-inheritance-과-다형성-polymorphism">3.3 상속(Inheritance)과 다형성(Polymorphism)</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-03-final.html#3-3-1-상속이란">3.3.1 상속이란?</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#3-3-2-상속-실습">3.3.2 상속 실습</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#3-3-3-다형성-polymorphism-왜-virtual이-중요한가">3.3.3 다형성(Polymorphism) — 왜 virtual이 중요한가?</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#3-3-4-virtual-없이-실행하면">3.3.4 virtual 없이 실행하면?</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-03-final.html#3-4-인터페이스-interface">3.4 인터페이스(Interface)</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-03-final.html#3-4-1-인터페이스가-필요한-이유">3.4.1 인터페이스가 필요한 이유</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#3-4-2-인터페이스-정의와-사용">3.4.2 인터페이스 정의와 사용</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#3-4-3-인터페이스의-핵심-요소">3.4.3 인터페이스의 핵심 요소</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-03-final.html#3-5-랜덤화-randomization-와-제약-조건-constraint">3.5 랜덤화(Randomization)와 제약 조건(Constraint)</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-03-final.html#3-5-1-왜-랜덤-테스트가-필요한가">3.5.1 왜 랜덤 테스트가 필요한가?</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#3-5-2-rand와-constraint-기본">3.5.2 rand와 constraint 기본</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#3-5-3-중간-정리-랜덤화-핵심-키워드">3.5.3 중간 정리 — 랜덤화 핵심 키워드</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#3-5-4-자주-쓰는-제약-조건-패턴">3.5.4 자주 쓰는 제약 조건 패턴</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#3-5-5-inline-constraint-with절">3.5.5 inline constraint (with절)</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#3-5-6-randomize-실패-처리">3.5.6 randomize() 실패 처리</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-03-final.html#3-6-열거형-enum-구조체-struct-타입-정의-typedef">3.6 열거형(Enum), 구조체(Struct), 타입 정의(Typedef)</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-03-final.html#3-6-1-열거형-enum">3.6.1 열거형(Enum)</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#3-6-2-구조체-struct-와-타입-정의-typedef">3.6.2 구조체(Struct)와 타입 정의(Typedef)</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#3-6-3-종합-실습-모든-개념-활용">3.6.3 종합 실습: 모든 개념 활용</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-03-final.html#3-7-체크포인트">3.7 체크포인트</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-03-final.html#셀프-체크">셀프 체크</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#연습문제">연습문제</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#흔한-컴파일-에러">흔한 컴파일 에러</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#용어-정리">용어 정리</a></li>
+              <li class="subsection-item"><a href="chapter-03-final.html#다음-챕터-미리보기">다음 챕터 미리보기</a></li>
+            </ul>
+          </li>
+        </ul>
+</div>
+        </div>
+      </div>
+
+      <!-- Ch.4 -->
+      <div class="ch-card open">
+        <div class="ch-header" onclick="toggleCard(this)">
+          <span class="ch-num">04</span>
+          <div class="ch-info">
+            <div class="ch-title-row">
+              <a class="ch-title" href="chapter-04-final.html">UVM 기본 컴포넌트</a>
+              <span class="ch-meta">1,257줄 &middot; SVG 7</span>
+            </div>
+            <div class="ch-keywords">
+              <span class="kw-tag">uvm_object</span><span class="kw-tag">uvm_component</span><span
+                class="kw-tag">Factory</span><span class="kw-tag">Phase</span>
+            </div>
+          </div>
+          <span class="ch-toggle">&#9660;</span>
+        </div>
+        <div class="ch-body">
+          <div class="ch-sections">
+<ul style="list-style:none;padding:0">
+          <li class="section-item"><a href="chapter-04-final.html#4-1-uvm-클래스-계층-구조">4.1 UVM 클래스 계층 구조</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-04-final.html#4-1-1-uvm은-거대한-클래스-라이브러리">4.1.1 UVM은 거대한 클래스 라이브러리</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#4-1-2-uvm-object와-uvm-component의-차이">4.1.2 uvm_object와 uvm_component의 차이</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#4-1-3-생성자의-차이-parent가-핵심">4.1.3 생성자의 차이 — parent가 핵심</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#4-1-4-실습-uvm-component-기본-예제">4.1.4 실습: uvm_component 기본 예제</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-04-final.html#4-2-factory-패턴-new-대신-create-를-쓰는-이유">4.2 Factory 패턴 — new() 대신 create()를 쓰는 이유</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-04-final.html#4-2-1-먼저-new-로-만들어보면">4.2.1 먼저 new()로 만들어보면?</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#4-2-2-new-의-문제-교체가-안-된다">4.2.2 new()의 문제 — 교체가 안 된다</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#4-2-3-factory의-해결책-코드-수정-없이-교체">4.2.3 Factory의 해결책 — 코드 수정 없이 교체</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#4-2-4-factory-사용법-3단계">4.2.4 Factory 사용법 3단계</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#4-2-5-factory-매크로가-하는-일">4.2.5 Factory 매크로가 하는 일</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#4-2-6-흔한-실수-매크로를-빠뜨리면">4.2.6 흔한 실수: 매크로를 빠뜨리면?</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#4-2-7-factory-실습-예제">4.2.7 Factory 실습 예제</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-04-final.html#4-3-phase-메커니즘-시뮬레이션의-순서-관리">4.3 Phase 메커니즘 — 시뮬레이션의 순서 관리</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-04-final.html#4-3-1-phase가-필요한-이유">4.3.1 Phase가 필요한 이유</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#4-3-2-핵심-phase-3가지">4.3.2 핵심 Phase 3가지</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#4-3-3-phase의-실행-순서-상세">4.3.3 Phase의 실행 순서 상세</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#4-3-4-build-phase의-실행-순서-위에서-아래로">4.3.4 build_phase의 실행 순서 — 위에서 아래로</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#4-3-5-phase에서-하면-안-되는-것">4.3.5 Phase에서 하면 안 되는 것</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#4-3-6-run-phase와-objection-시뮬레이션-종료-조건">4.3.6 run_phase와 objection — 시뮬레이션 종료 조건</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#4-3-7-phase-실습-실행-순서-확인">4.3.7 Phase 실습: 실행 순서 확인</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-04-final.html#4-4-종합-uvm-컴포넌트-작성-패턴">4.4 종합: UVM 컴포넌트 작성 패턴</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-04-final.html#4-4-1-uvm-컴포넌트-작성-템플릿">4.4.1 UVM 컴포넌트 작성 템플릿</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#4-4-2-uvm-object-작성-템플릿">4.4.2 uvm_object 작성 템플릿</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#4-4-3-종합-실습-미니-검증-환경">4.4.3 종합 실습: 미니 검증 환경</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-04-final.html#4-5-체크포인트">4.5 체크포인트</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-04-final.html#셀프-체크">셀프 체크</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#연습문제">연습문제</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#흔한-에러와-해결법">흔한 에러와 해결법</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#용어-정리">용어 정리</a></li>
+              <li class="subsection-item"><a href="chapter-04-final.html#다음-챕터-미리보기">다음 챕터 미리보기</a></li>
+            </ul>
+          </li>
+        </ul>
+</div>
+        </div>
+      </div>
+
+      <!-- Ch.5 -->
+      <div class="ch-card open">
+        <div class="ch-header" onclick="toggleCard(this)">
+          <span class="ch-num">05</span>
+          <div class="ch-info">
+            <div class="ch-title-row">
+              <a class="ch-title" href="chapter-05-final.html">첫 UVM 테스트벤치</a>
+              <span class="ch-meta">1,146줄 &middot; SVG 4</span>
+            </div>
+            <div class="ch-keywords">
+              <span class="kw-tag">Virtual Interface</span><span class="kw-tag">config_db</span><span
+                class="kw-tag">Driver</span><span class="kw-tag">Monitor</span>
+            </div>
+          </div>
+          <span class="ch-toggle">&#9660;</span>
+        </div>
+        <div class="ch-body">
+          <div class="ch-sections">
+<ul style="list-style:none;padding:0">
+          <li class="section-item"><a href="chapter-05-final.html#5-1-dut-소개-4비트-업카운터">5.1 DUT 소개 — 4비트 업카운터</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-05-final.html#5-1-1-검증할-대상-4비트-카운터">5.1.1 검증할 대상: 4비트 카운터</a></li>
+              <li class="subsection-item"><a href="chapter-05-final.html#5-1-2-interface-정의">5.1.2 Interface 정의</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-05-final.html#5-2-virtual-interface-왜-필요한가">5.2 Virtual Interface — 왜 필요한가</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-05-final.html#5-2-1-문제-class에서-interface에-접근할-수-없다">5.2.1 문제: class에서 interface에 접근할 수 없다</a></li>
+              <li class="subsection-item"><a href="chapter-05-final.html#5-2-2-해결-virtual-interface">5.2.2 해결: virtual interface</a></li>
+              <li class="subsection-item"><a href="chapter-05-final.html#5-2-3-virtual-interface-선언과-사용">5.2.3 virtual interface 선언과 사용</a></li>
+              <li class="subsection-item"><a href="chapter-05-final.html#5-2-4-흔한-실수-virtual-interface를-연결-안-하면">5.2.4 흔한 실수: virtual interface를 연결 안 하면?</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-05-final.html#5-3-uvm-config-db-설정값-전달-메커니즘">5.3 uvm_config_db — 설정값 전달 메커니즘</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-05-final.html#5-3-1-config-db가-필요한-이유">5.3.1 config_db가 필요한 이유</a></li>
+              <li class="subsection-item"><a href="chapter-05-final.html#5-3-2-config-db-사용법-set-과-get">5.3.2 config_db 사용법: set()과 get()</a></li>
+              <li class="subsection-item"><a href="chapter-05-final.html#5-3-3-set-get-패턴-정리">5.3.3 set/get 패턴 정리</a></li>
+              <li class="subsection-item"><a href="chapter-05-final.html#5-3-4-흔한-실수-config-db-get-실패">5.3.4 흔한 실수: config_db get 실패</a></li>
+              <li class="subsection-item"><a href="chapter-05-final.html#5-3-5-실습-config-db로-virtual-interface-전달">5.3.5 실습: config_db로 virtual interface 전달</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-05-final.html#5-4-드라이버와-모니터-기초">5.4 드라이버와 모니터 기초</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-05-final.html#5-4-1-드라이버-신호를-보내는-역할">5.4.1 드라이버 = 신호를 보내는 역할</a></li>
+              <li class="subsection-item"><a href="chapter-05-final.html#5-4-2-모니터-신호를-관찰하는-역할">5.4.2 모니터 = 신호를 관찰하는 역할</a></li>
+              <li class="subsection-item"><a href="chapter-05-final.html#5-4-3-에이전트-드라이버-모니터-묶음">5.4.3 에이전트 = 드라이버 + 모니터 묶음</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-05-final.html#5-5-종합-첫-완전한-uvm-테스트벤치">5.5 종합: 첫 완전한 UVM 테스트벤치</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-05-final.html#5-5-1-전체-구조-한눈에-보기">5.5.1 전체 구조 한눈에 보기</a></li>
+              <li class="subsection-item"><a href="chapter-05-final.html#5-5-2-단계별-빌드업">5.5.2 단계별 빌드업</a></li>
+              <li class="subsection-item"><a href="chapter-05-final.html#5-5-3-코드-구조-정리">5.5.3 코드 구조 정리</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-05-final.html#5-6-체크포인트">5.6 체크포인트</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-05-final.html#셀프-체크">셀프 체크</a></li>
+              <li class="subsection-item"><a href="chapter-05-final.html#연습문제">연습문제</a></li>
+              <li class="subsection-item"><a href="chapter-05-final.html#흔한-에러와-해결법">흔한 에러와 해결법</a></li>
+              <li class="subsection-item"><a href="chapter-05-final.html#용어-정리">용어 정리</a></li>
+              <li class="subsection-item"><a href="chapter-05-final.html#다음-챕터-미리보기">다음 챕터 미리보기</a></li>
+            </ul>
+          </li>
+        </ul>
+</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PART 2 ========== -->
+    <section class="part-section part-2">
+      <div class="part-header">
+        <span class="part-badge">Part 2</span>
+        <h2>깊이 파기</h2>
+      </div>
+      <p class="part-desc">각 UVM 컴포넌트를 심화 학습하고, 자동 검증/디버깅 기법을 익힙니다. &mdash; 이 파트를 끝내면 Coverage-Driven Verification을 수행할
+        수 있습니다.</p>
+
+      <!-- Ch.6 -->
+      <div class="ch-card open">
+        <div class="ch-header" onclick="toggleCard(this)">
+          <span class="ch-num">06</span>
+          <div class="ch-info">
+            <div class="ch-title-row">
+              <a class="ch-title" href="chapter-06-final.html">시퀀스 &amp; 시퀀서</a>
+              <span class="ch-meta">1,274줄 &middot; SVG 6</span>
+            </div>
+            <div class="ch-keywords">
+              <span class="kw-tag">uvm_sequence</span><span class="kw-tag">uvm_sequencer</span><span
+                class="kw-tag">start()</span>
+            </div>
+          </div>
+          <span class="ch-toggle">&#9660;</span>
+        </div>
+        <div class="ch-body">
+          <div class="ch-sections">
+<ul style="list-style:none;padding:0">
+          <li class="section-item"><a href="chapter-06-final.html#6-1-왜-시퀀스가-필요한가">6.1 왜 시퀀스가 필요한가</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-06-final.html#6-1-1-chapter-5-방식의-한계">6.1.1 Chapter 5 방식의 한계</a></li>
+              <li class="subsection-item"><a href="chapter-06-final.html#6-1-2-해결-what과-how의-분리">6.1.2 해결: What과 How의 분리</a></li>
+              <li class="subsection-item"><a href="chapter-06-final.html#6-1-3-sequence-sequencer-driver-흐름">6.1.3 Sequence-Sequencer-Driver 흐름</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-06-final.html#6-2-트랜잭션-정의-uvm-sequence-item">6.2 트랜잭션 정의 — uvm_sequence_item</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-06-final.html#6-2-1-트랜잭션이란">6.2.1 트랜잭션이란?</a></li>
+              <li class="subsection-item"><a href="chapter-06-final.html#6-2-2-uvm-sequence-item-작성">6.2.2 uvm_sequence_item 작성</a></li>
+              <li class="subsection-item"><a href="chapter-06-final.html#6-2-3-주요-설계-원칙">6.2.3 주요 설계 원칙</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-06-final.html#6-3-시퀀스-작성-uvm-sequence">6.3 시퀀스 작성 — uvm_sequence</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-06-final.html#6-3-1-시퀀스란">6.3.1 시퀀스란?</a></li>
+              <li class="subsection-item"><a href="chapter-06-final.html#6-3-2-첫-번째-시퀀스-리셋-시퀀스">6.3.2 첫 번째 시퀀스: 리셋 시퀀스</a></li>
+              <li class="subsection-item"><a href="chapter-06-final.html#6-3-3-두-번째-시퀀스-카운트-시퀀스">6.3.3 두 번째 시퀀스: 카운트 시퀀스</a></li>
+              <li class="subsection-item"><a href="chapter-06-final.html#6-3-4-uvm-do-매크로-간편-표기">6.3.4 `uvm_do 매크로 — 간편 표기</a></li>
+              <li class="subsection-item"><a href="chapter-06-final.html#6-3-5-시퀀스-조합-마스터-시퀀스">6.3.5 시퀀스 조합: 마스터 시퀀스</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-06-final.html#6-4-시퀀서와-드라이버-연결">6.4 시퀀서와 드라이버 연결</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-06-final.html#6-4-1-시퀀서-uvm-sequencer">6.4.1 시퀀서 (uvm_sequencer)</a></li>
+              <li class="subsection-item"><a href="chapter-06-final.html#6-4-2-드라이버-리팩토링-get-next-item-item-done">6.4.2 드라이버 리팩토링: get_next_item()/item_done()</a></li>
+              <li class="subsection-item"><a href="chapter-06-final.html#6-4-3-seq-item-port-드라이버와-시퀀서의-연결">6.4.3 seq_item_port — 드라이버와 시퀀서의 연결</a></li>
+              <li class="subsection-item"><a href="chapter-06-final.html#6-4-4-시퀀스-실행-test에서-start-호출">6.4.4 시퀀스 실행: test에서 start() 호출</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-06-final.html#6-5-종합-시퀀스-기반-테스트벤치">6.5 종합: 시퀀스 기반 테스트벤치</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-06-final.html#6-5-1-before-after-비교">6.5.1 Before → After 비교</a></li>
+              <li class="subsection-item"><a href="chapter-06-final.html#6-5-2-완전한-코드">6.5.2 완전한 코드</a></li>
+              <li class="subsection-item"><a href="chapter-06-final.html#6-5-3-ch-5-대비-변경-사항-정리">6.5.3 Ch.5 대비 변경 사항 정리</a></li>
+              <li class="subsection-item"><a href="chapter-06-final.html#6-5-4-다양한-테스트-만들기">6.5.4 다양한 테스트 만들기</a></li>
+              <li class="subsection-item"><a href="chapter-06-final.html#6-5-5-시뮬레이션-실행">6.5.5 시뮬레이션 실행</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-06-final.html#6-6-체크포인트">6.6 체크포인트</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-06-final.html#셀프-체크">셀프 체크</a></li>
+              <li class="subsection-item"><a href="chapter-06-final.html#연습문제">연습문제</a></li>
+              <li class="subsection-item"><a href="chapter-06-final.html#흔한-에러와-해결">흔한 에러와 해결</a></li>
+              <li class="subsection-item"><a href="chapter-06-final.html#용어-정리">용어 정리</a></li>
+              <li class="subsection-item"><a href="chapter-06-final.html#다음-챕터-예고">다음 챕터 예고</a></li>
+            </ul>
+          </li>
+        </ul>
+</div>
+        </div>
+      </div>
+
+      <!-- Ch.7 -->
+      <div class="ch-card open">
+        <div class="ch-header" onclick="toggleCard(this)">
+          <span class="ch-num">07</span>
+          <div class="ch-info">
+            <div class="ch-title-row">
+              <a class="ch-title" href="chapter-07-final.html">드라이버 &amp; 모니터 심화</a>
+              <span class="ch-meta">1,182줄 &middot; SVG 4</span>
+            </div>
+            <div class="ch-keywords">
+              <span class="kw-tag">TLM Port</span><span class="kw-tag">Analysis Port</span><span class="kw-tag">Clocking
+                Block</span><span class="kw-tag">is_active</span>
+            </div>
+          </div>
+          <span class="ch-toggle">&#9660;</span>
+        </div>
+        <div class="ch-body">
+          <div class="ch-sections">
+<ul style="list-style:none;padding:0">
+          <li class="section-item"><a href="chapter-07-final.html#7-1-tlm-포트-이해">7.1 TLM 포트 이해</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-07-final.html#7-1-1-tlm이란">7.1.1 TLM이란?</a></li>
+              <li class="subsection-item"><a href="chapter-07-final.html#7-1-2-sequencer-driver-tlm-연결">7.1.2 Sequencer-Driver TLM 연결</a></li>
+              <li class="subsection-item"><a href="chapter-07-final.html#7-1-3-analysis-port-1-n-브로드캐스트">7.1.3 Analysis Port — 1:N 브로드캐스트</a></li>
+              <li class="subsection-item"><a href="chapter-07-final.html#7-1-4-analysis-port-사용법">7.1.4 Analysis Port 사용법</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-07-final.html#7-2-clocking-block-amp-modport">7.2 Clocking Block &amp; Modport</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-07-final.html#7-2-2-해결-clocking-block">7.2.2 해결: Clocking Block</a></li>
+              <li class="subsection-item"><a href="chapter-07-final.html#7-2-3-modport-접근-권한-제어">7.2.3 Modport — 접근 권한 제어</a></li>
+              <li class="subsection-item"><a href="chapter-07-final.html#7-2-4-clocking-block-적용">7.2.4 Clocking Block 적용</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-07-final.html#7-3-드라이버-심화">7.3 드라이버 심화</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-07-final.html#7-3-1-드라이버의-역할-재정의">7.3.1 드라이버의 역할 재정의</a></li>
+              <li class="subsection-item"><a href="chapter-07-final.html#7-3-2-get-next-item-vs-try-next-item">7.3.2 get_next_item vs try_next_item</a></li>
+              <li class="subsection-item"><a href="chapter-07-final.html#7-3-3-프로토콜-구동-패턴">7.3.3 프로토콜 구동 패턴</a></li>
+              <li class="subsection-item"><a href="chapter-07-final.html#7-3-4-response-처리-간단-소개">7.3.4 Response 처리 (간단 소개)</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-07-final.html#7-4-모니터-심화">7.4 모니터 심화</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-07-final.html#7-4-1-모니터의-역할">7.4.1 모니터의 역할</a></li>
+              <li class="subsection-item"><a href="chapter-07-final.html#7-4-2-실무-수준-모니터">7.4.2 실무 수준 모니터</a></li>
+              <li class="subsection-item"><a href="chapter-07-final.html#7-4-3-모니터-설계-규칙">7.4.3 모니터 설계 규칙</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-07-final.html#7-5-agent-구성-is-active">7.5 Agent 구성 — is_active</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-07-final.html#7-5-1-능동-에이전트-vs-수동-에이전트">7.5.1 능동 에이전트 vs 수동 에이전트</a></li>
+              <li class="subsection-item"><a href="chapter-07-final.html#7-5-2-is-active-구현">7.5.2 is_active 구현</a></li>
+              <li class="subsection-item"><a href="chapter-07-final.html#7-5-3-수동-에이전트-활용-예시">7.5.3 수동 에이전트 활용 예시</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-07-final.html#7-6-종합-실무-수준-테스트벤치">7.6 종합: 실무 수준 테스트벤치</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-07-final.html#7-6-1-ch-5-6-대비-진화-정리">7.6.1 Ch.5/6 대비 진화 정리</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-07-final.html#7-7-체크포인트">7.7 체크포인트</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-07-final.html#셀프-체크">셀프 체크</a></li>
+              <li class="subsection-item"><a href="chapter-07-final.html#연습문제">연습문제</a></li>
+              <li class="subsection-item"><a href="chapter-07-final.html#흔한-에러와-해결">흔한 에러와 해결</a></li>
+              <li class="subsection-item"><a href="chapter-07-final.html#용어-정리">용어 정리</a></li>
+              <li class="subsection-item"><a href="chapter-07-final.html#다음-챕터-예고">다음 챕터 예고</a></li>
+            </ul>
+          </li>
+        </ul>
+</div>
+        </div>
+      </div>
+
+      <!-- Ch.8 -->
+      <div class="ch-card open">
+        <div class="ch-header" onclick="toggleCard(this)">
+          <span class="ch-num">08</span>
+          <div class="ch-info">
+            <div class="ch-title-row">
+              <a class="ch-title" href="chapter-08-final.html">스코어보드 &amp; 커버리지</a>
+              <span class="ch-meta">1,190줄 &middot; SVG 7</span>
+            </div>
+            <div class="ch-keywords">
+              <span class="kw-tag">uvm_scoreboard</span><span class="kw-tag">covergroup</span><span
+                class="kw-tag">CDV</span>
+            </div>
+          </div>
+          <span class="ch-toggle">&#9660;</span>
+        </div>
+        <div class="ch-body">
+          <div class="ch-sections">
+<ul style="list-style:none;padding:0">
+          <li class="section-item"><a href="chapter-08-final.html#8-1-왜-자동-검증이-필요한가">8.1 왜 자동 검증이 필요한가</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-08-final.html#8-1-1-수동-검증의-한계-눈으로-확인하는-검증">8.1.1 수동 검증의 한계 — 눈으로 확인하는 검증</a></li>
+              <li class="subsection-item"><a href="chapter-08-final.html#8-1-2-스코어보드-자동-채점기">8.1.2 스코어보드 — 자동 채점기</a></li>
+              <li class="subsection-item"><a href="chapter-08-final.html#8-1-3-커버리지-시험-범위-체크리스트">8.1.3 커버리지 — 시험 범위 체크리스트</a></li>
+              <li class="subsection-item"><a href="chapter-08-final.html#8-1-4-검증-자동화-전체-구조">8.1.4 검증 자동화 전체 구조</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-08-final.html#8-2-스코어보드-기초">8.2 스코어보드 기초</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-08-final.html#8-2-1-reference-model-정답지-만들기">8.2.1 Reference Model — 정답지 만들기</a></li>
+              <li class="subsection-item"><a href="chapter-08-final.html#8-2-2-uvm-scoreboard-와-uvm-analysis-imp">8.2.2 uvm_scoreboard 와 uvm_analysis_imp</a></li>
+              <li class="subsection-item"><a href="chapter-08-final.html#8-2-3-write-메서드-트랜잭션이-도착하면">8.2.3 write() 메서드 — 트랜잭션이 도착하면</a></li>
+              <li class="subsection-item"><a href="chapter-08-final.html#8-2-4-기본-스코어보드-구현-예제-8-1">8.2.4 기본 스코어보드 구현 — 예제 8-1</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-08-final.html#8-3-스코어보드-심화">8.3 스코어보드 심화</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-08-final.html#8-3-1-uvm-subscriber-더-간단한-대안">8.3.1 uvm_subscriber — 더 간단한 대안</a></li>
+              <li class="subsection-item"><a href="chapter-08-final.html#8-3-2-예측-비교-분리-패턴">8.3.2 예측-비교 분리 패턴</a></li>
+              <li class="subsection-item"><a href="chapter-08-final.html#8-3-3-멀티포트-스코어보드">8.3.3 멀티포트 스코어보드</a></li>
+              <li class="subsection-item"><a href="chapter-08-final.html#8-3-4-report-phase-로-최종-결과-요약">8.3.4 report_phase()로 최종 결과 요약</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-08-final.html#8-4-기능-커버리지-기초">8.4 기능 커버리지 기초</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-08-final.html#8-4-1-코드-커버리지-vs-기능-커버리지">8.4.1 코드 커버리지 vs 기능 커버리지</a></li>
+              <li class="subsection-item"><a href="chapter-08-final.html#8-4-2-covergroup-coverpoint-bins">8.4.2 covergroup, coverpoint, bins</a></li>
+              <li class="subsection-item"><a href="chapter-08-final.html#8-4-3-cross-coverage">8.4.3 cross coverage</a></li>
+              <li class="subsection-item"><a href="chapter-08-final.html#8-4-4-기본-커버리지-수집기-예제-8-2">8.4.4 기본 커버리지 수집기 — 예제 8-2</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-08-final.html#8-5-커버리지-기반-검증-cdv">8.5 커버리지 기반 검증 (CDV)</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-08-final.html#8-5-1-cdv-워크플로우">8.5.1 CDV 워크플로우</a></li>
+              <li class="subsection-item"><a href="chapter-08-final.html#8-5-2-커버리지-리포트-읽기">8.5.2 커버리지 리포트 읽기</a></li>
+              <li class="subsection-item"><a href="chapter-08-final.html#8-5-3-커버리지-100-의-함정">8.5.3 커버리지 100%의 함정</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-08-final.html#8-6-종합-자동-검증-테스트벤치">8.6 종합: 자동 검증 테스트벤치</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-08-final.html#8-6-1-전체-구조">8.6.1 전체 구조</a></li>
+              <li class="subsection-item"><a href="chapter-08-final.html#8-6-2-완성-코드-예제-8-3">8.6.2 완성 코드 — 예제 8-3</a></li>
+              <li class="subsection-item"><a href="chapter-08-final.html#8-6-3-실행-결과">8.6.3 실행 결과</a></li>
+              <li class="subsection-item"><a href="chapter-08-final.html#8-6-4-ch-5-ch-8-진화-정리">8.6.4 Ch.5 → Ch.8 진화 정리</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-08-final.html#8-7-체크포인트">8.7 체크포인트</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-08-final.html#셀프-체크">셀프 체크</a></li>
+              <li class="subsection-item"><a href="chapter-08-final.html#연습문제">연습문제</a></li>
+              <li class="subsection-item"><a href="chapter-08-final.html#다음-장-미리보기">다음 장 미리보기</a></li>
+            </ul>
+          </li>
+        </ul>
+</div>
+        </div>
+      </div>
+
+      <!-- Ch.9 -->
+      <div class="ch-card open">
+        <div class="ch-header" onclick="toggleCard(this)">
+          <span class="ch-num">09</span>
+          <div class="ch-info">
+            <div class="ch-title-row">
+              <a class="ch-title" href="chapter-09-final.html">테스트 시나리오</a>
+              <span class="ch-meta">1,048줄 &middot; SVG 3</span>
+            </div>
+            <div class="ch-keywords">
+              <span class="kw-tag">Constrained Random</span><span class="kw-tag">Error Injection</span><span
+                class="kw-tag">Regression</span>
+            </div>
+          </div>
+          <span class="ch-toggle">&#9660;</span>
+        </div>
+        <div class="ch-body">
+          <div class="ch-sections">
+<ul style="list-style:none;padding:0">
+          <li class="section-item"><a href="chapter-09-final.html#9-1-왜-시나리오-설계가-중요한가">9.1 왜 시나리오 설계가 중요한가</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-09-final.html#9-1-1-ch-8-커버리지-갭-분석-87-5-의-원인">9.1.1 Ch.8 커버리지 갭 분석 — 87.5%의 원인</a></li>
+              <li class="subsection-item"><a href="chapter-09-final.html#9-1-2-시나리오-유형-3가지">9.1.2 시나리오 유형 3가지</a></li>
+              <li class="subsection-item"><a href="chapter-09-final.html#9-1-3-시나리오-설계-전략">9.1.3 시나리오 설계 전략</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-09-final.html#9-2-타겟-시퀀스-빈틈-메우기">9.2 타겟 시퀀스 — 빈틈 메우기</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-09-final.html#9-2-1-커버리지-갭에서-시퀀스로-역추적-사고법">9.2.1 커버리지 갭에서 시퀀스로 — 역추적 사고법</a></li>
+              <li class="subsection-item"><a href="chapter-09-final.html#9-2-2-리셋-중-enable-시퀀스">9.2.2 리셋 중 enable 시퀀스</a></li>
+              <li class="subsection-item"><a href="chapter-09-final.html#9-2-3-최대값-정지-시퀀스">9.2.3 최대값 정지 시퀀스</a></li>
+              <li class="subsection-item"><a href="chapter-09-final.html#9-2-4-타겟-시퀀스-실행-결과">9.2.4 타겟 시퀀스 실행 결과</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-09-final.html#9-3-constrained-random-넓게-쓸기">9.3 Constrained Random — 넓게 쓸기</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-09-final.html#9-3-1-왜-랜덤인가">9.3.1 왜 랜덤인가</a></li>
+              <li class="subsection-item"><a href="chapter-09-final.html#9-3-2-constraint-활용법-복습">9.3.2 constraint 활용법 복습</a></li>
+              <li class="subsection-item"><a href="chapter-09-final.html#9-3-3-랜덤-시퀀스-구현">9.3.3 랜덤 시퀀스 구현</a></li>
+              <li class="subsection-item"><a href="chapter-09-final.html#9-3-4-seed-관리와-재현성">9.3.4 Seed 관리와 재현성</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-09-final.html#9-4-에러-주입-시퀀스-견고함-검증">9.4 에러 주입 시퀀스 — 견고함 검증</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-09-final.html#9-4-1-에러-주입이란">9.4.1 에러 주입이란</a></li>
+              <li class="subsection-item"><a href="chapter-09-final.html#9-4-2-코너-케이스-시퀀스">9.4.2 코너 케이스 시퀀스</a></li>
+              <li class="subsection-item"><a href="chapter-09-final.html#9-4-3-경계값-시퀀스">9.4.3 경계값 시퀀스</a></li>
+              <li class="subsection-item"><a href="chapter-09-final.html#9-4-4-스코어보드와의-협력">9.4.4 스코어보드와의 협력</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-09-final.html#9-5-테스트-클래스-관리">9.5 테스트 클래스 관리</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-09-final.html#9-5-1-uvm-test-상속-패턴">9.5.1 uvm_test 상속 패턴</a></li>
+              <li class="subsection-item"><a href="chapter-09-final.html#9-5-2-uvm-testname으로-테스트-선택">9.5.2 +UVM_TESTNAME으로 테스트 선택</a></li>
+              <li class="subsection-item"><a href="chapter-09-final.html#9-5-3-테스트-라이브러리와-regression">9.5.3 테스트 라이브러리와 Regression</a></li>
+              <li class="subsection-item"><a href="chapter-09-final.html#9-5-4-테스트별-커버리지-누적">9.5.4 테스트별 커버리지 누적</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-09-final.html#9-6-종합-커버리지-95-달성">9.6 종합: 커버리지 95% 달성</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-09-final.html#9-6-1-전체-시나리오-구성">9.6.1 전체 시나리오 구성</a></li>
+              <li class="subsection-item"><a href="chapter-09-final.html#9-6-2-완성-코드-예제-9-1">9.6.2 완성 코드 — 예제 9-1</a></li>
+              <li class="subsection-item"><a href="chapter-09-final.html#9-6-3-실행-결과-87-5-97-2">9.6.3 실행 결과 — 87.5% → 97.2%</a></li>
+              <li class="subsection-item"><a href="chapter-09-final.html#9-6-4-ch-5-ch-9-진화-정리">9.6.4 Ch.5 → Ch.9 진화 정리</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-09-final.html#9-7-체크포인트">9.7 체크포인트</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-09-final.html#셀프-체크">셀프 체크</a></li>
+              <li class="subsection-item"><a href="chapter-09-final.html#연습문제">연습문제</a></li>
+              <li class="subsection-item"><a href="chapter-09-final.html#다음-장-미리보기">다음 장 미리보기</a></li>
+            </ul>
+          </li>
+        </ul>
+</div>
+        </div>
+      </div>
+
+      <!-- Ch.10 -->
+      <div class="ch-card open">
+        <div class="ch-header" onclick="toggleCard(this)">
+          <span class="ch-num">10</span>
+          <div class="ch-info">
+            <div class="ch-title-row">
+              <a class="ch-title" href="chapter-10-final.html">디버깅 기법</a>
+              <span class="ch-meta">1,277줄 &middot; SVG 1</span>
+            </div>
+            <div class="ch-keywords">
+              <span class="kw-tag">UVM Message</span><span class="kw-tag">Waveform</span><span class="kw-tag">Factory
+                Override</span>
+            </div>
+          </div>
+          <span class="ch-toggle">&#9660;</span>
+        </div>
+        <div class="ch-body">
+          <div class="ch-sections">
+<ul style="list-style:none;padding:0">
+          <li class="section-item"><a href="chapter-10-final.html#10-1-왜-체계적-디버깅인가">10.1 왜 체계적 디버깅인가</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-10-final.html#10-1-1-quot-파형만-보면-되지-quot-실무의-현실">10.1.1 &quot;파형만 보면 되지?&quot; — 실무의 현실</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-1-2-uvm-디버깅-도구-전체-맵">10.1.2 UVM 디버깅 도구 전체 맵</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-1-3-디버깅-워크플로우">10.1.3 디버깅 워크플로우</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-10-final.html#10-2-uvm-메시지-시스템">10.2 UVM 메시지 시스템</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-10-final.html#10-2-1-4가지-심각도-uvm-info-warning-error-fatal">10.2.1 4가지 심각도 — UVM_INFO / WARNING / ERROR / FATAL</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-2-2-verbosity-레벨-low-medium-high-debug">10.2.2 Verbosity 레벨 — LOW / MEDIUM / HIGH / DEBUG</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-2-3-명령줄-verbosity-제어-uvm-verbosity">10.2.3 명령줄 Verbosity 제어 (+UVM_VERBOSITY)</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-2-4-컴포넌트별-verbosity-제어">10.2.4 컴포넌트별 Verbosity 제어</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-2-5-메시지-필터링-실전-예제">10.2.5 메시지 필터링 실전 예제</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-10-final.html#10-3-파형-분석">10.3 파형 분석</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-10-final.html#10-3-1-vcd-fsdb-파일-생성">10.3.1 VCD/FSDB 파일 생성</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-3-2-파형-뷰어-dve-verdi-gtkwave">10.3.2 파형 뷰어 — DVE, Verdi, GTKWave</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-3-3-rtl-신호와-uvm-로그-타임스탬프-연결">10.3.3 RTL 신호와 UVM 로그 타임스탬프 연결</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-3-4-실전-mismatch-시점-파형-확인">10.3.4 실전: MISMATCH 시점 파형 확인</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-10-final.html#10-4-factory-override-디버깅">10.4 Factory Override 디버깅</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-10-final.html#10-4-1-디버그-드라이버-교체-상세-로깅-버전">10.4.1 디버그 드라이버 교체 — 상세 로깅 버전</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-4-2-런타임-컴포넌트-교환-패턴">10.4.2 런타임 컴포넌트 교환 패턴</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-4-3-실전-드라이버-vs-모니터-문제-분리">10.4.3 실전: 드라이버 vs 모니터 문제 분리</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-10-final.html#10-5-흔한-uvm-에러-메시지-해석">10.5 흔한 UVM 에러 메시지 해석</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-10-final.html#10-5-1-연결-에러-quot-port-is-not-connected-quot">10.5.1 연결 에러 — &quot;port is not connected&quot;</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-5-2-factory-에러-quot-create-failed-quot">10.5.2 Factory 에러 — &quot;create failed&quot;</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-5-3-phase-에러-quot-objection-raised-but-not-dropped-quot">10.5.3 Phase 에러 — &quot;objection raised but not dropped&quot;</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-5-4-randomization-에러-quot-randomize-failed-quot">10.5.4 Randomization 에러 — &quot;randomize() failed&quot;</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-5-5-config-db-에러-quot-config-db-get-failed-quot">10.5.5 Config DB 에러 — &quot;config_db::get failed&quot;</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-5-6-에러-메시지-빠른-참조-표">10.5.6 에러 메시지 빠른 참조 표</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-10-final.html#10-6-실전-mismatch-원인-찾기">10.6 실전: MISMATCH 원인 찾기</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-10-final.html#10-6-1-시나리오-의도적-버그-주입">10.6.1 시나리오 — 의도적 버그 주입</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-6-2-단계별-디버깅-프로세스">10.6.2 단계별 디버깅 프로세스</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-6-3-원인-발견-및-수정">10.6.3 원인 발견 및 수정</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-6-4-수정-검증-regression-확인">10.6.4 수정 검증 — regression 확인</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-10-final.html#10-7-체크포인트">10.7 체크포인트</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-10-final.html#10-7-1-셀프-체크">10.7.1 셀프 체크</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-7-2-연습문제">10.7.2 연습문제</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#10-7-3-part-2-마무리-amp-part-3-미리보기">10.7.3 Part 2 마무리 &amp; Part 3 미리보기</a></li>
+              <li class="subsection-item"><a href="chapter-10-final.html#다음-장-미리보기">다음 장 미리보기</a></li>
+            </ul>
+          </li>
+        </ul>
+</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PART 3 ========== -->
+    <section class="part-section part-3">
+      <div class="part-header">
+        <span class="part-badge">Part 3</span>
+        <h2>완성하기</h2>
+      </div>
+      <p class="part-desc">실무 프로토콜(APB) 기반 검증 환경을 구축하고, 면접/취업까지 준비합니다. &mdash; 이 파트를 끝내면 팹리스 검증 엔지니어 취업 준비가 완료됩니다.</p>
+
+      <!-- Ch.11 -->
+      <div class="ch-card open">
+        <div class="ch-header" onclick="toggleCard(this)">
+          <span class="ch-num">11</span>
+          <div class="ch-info">
+            <div class="ch-title-row">
+              <a class="ch-title" href="chapter-11-final.html">인터페이스와 BFM</a>
+              <span class="ch-meta">1,207줄</span>
+            </div>
+            <div class="ch-keywords">
+              <span class="kw-tag">APB Protocol</span><span class="kw-tag">Clocking Block</span><span
+                class="kw-tag">BFM</span>
+            </div>
+          </div>
+          <span class="ch-toggle">&#9660;</span>
+        </div>
+        <div class="ch-body">
+          <div class="ch-sections">
+<ul style="list-style:none;padding:0">
+          <li class="section-item"><a href="chapter-11-final.html#11-1-4비트-카운터를-졸업하며">11.1 4비트 카운터를 졸업하며</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-11-final.html#11-1-1-part-2에서-배운-것-구조는-같다">11.1.1 Part 2에서 배운 것 — 구조는 같다</a></li>
+              <li class="subsection-item"><a href="chapter-11-final.html#11-1-2-실무-프로토콜이란-apb-소개">11.1.2 실무 프로토콜이란? — APB 소개</a></li>
+              <li class="subsection-item"><a href="chapter-11-final.html#11-1-3-apb-프로토콜-기본-동작">11.1.3 APB 프로토콜 기본 동작</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-11-final.html#11-2-systemverilog-인터페이스-심화">11.2 SystemVerilog 인터페이스 심화</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-11-final.html#11-2-1-clocking-block-타이밍-안전한-신호-접근">11.2.1 Clocking Block — 타이밍 안전한 신호 접근</a></li>
+              <li class="subsection-item"><a href="chapter-11-final.html#11-2-2-modport-드라이버-모니터-접근-제어">11.2.2 Modport — 드라이버/모니터 접근 제어</a></li>
+              <li class="subsection-item"><a href="chapter-11-final.html#11-2-3-apb-인터페이스-설계-apb-if">11.2.3 APB 인터페이스 설계 (apb_if)</a></li>
+              <li class="subsection-item"><a href="chapter-11-final.html#11-2-4-counter-if-vs-apb-if-비교">11.2.4 counter_if vs apb_if 비교</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-11-final.html#11-3-apb-slave-dut">11.3 APB Slave DUT</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-11-final.html#11-3-1-apb-slave-memory-rtl">11.3.1 APB Slave Memory RTL</a></li>
+              <li class="subsection-item"><a href="chapter-11-final.html#11-3-2-apb-트랜잭션-정의-apb-seq-item">11.3.2 APB 트랜잭션 정의 (apb_seq_item)</a></li>
+              <li class="subsection-item"><a href="chapter-11-final.html#11-3-3-tb-top-dut와-인터페이스-연결">11.3.3 tb_top — DUT와 인터페이스 연결</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-11-final.html#11-4-bus-functional-model-bfm-패턴">11.4 Bus Functional Model (BFM) 패턴</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-11-final.html#11-4-1-bfm이란-프로토콜-행위를-캡슐화">11.4.1 BFM이란? — 프로토콜 행위를 캡슐화</a></li>
+              <li class="subsection-item"><a href="chapter-11-final.html#11-4-2-apb-master-driver-write-read-프로토콜-구현">11.4.2 APB Master Driver — Write/Read 프로토콜 구현</a></li>
+              <li class="subsection-item"><a href="chapter-11-final.html#11-4-3-apb-monitor-프로토콜-관찰과-트랜잭션-추출">11.4.3 APB Monitor — 프로토콜 관찰과 트랜잭션 추출</a></li>
+              <li class="subsection-item"><a href="chapter-11-final.html#11-4-4-counter-driver-vs-apb-driver-비교">11.4.4 counter_driver vs apb_driver 비교</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-11-final.html#11-5-apb-에이전트-조립">11.5 APB 에이전트 조립</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-11-final.html#11-5-1-apb-agent-드라이버-모니터-시퀀서-통합">11.5.1 apb_agent — 드라이버, 모니터, 시퀀서 통합</a></li>
+              <li class="subsection-item"><a href="chapter-11-final.html#11-5-2-apb-env와-apb-base-test">11.5.2 apb_env와 apb_base_test</a></li>
+              <li class="subsection-item"><a href="chapter-11-final.html#11-5-3-첫-apb-시뮬레이션-write-amp-read-테스트">11.5.3 첫 APB 시뮬레이션 — Write &amp; Read 테스트</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-11-final.html#11-6-실전-apb-write-read-검증">11.6 실전: APB Write/Read 검증</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-11-final.html#11-6-1-apb-시퀀스-다양한-시나리오">11.6.1 APB 시퀀스 — 다양한 시나리오</a></li>
+              <li class="subsection-item"><a href="chapter-11-final.html#11-6-2-apb-스코어보드-메모리-모델-기반-비교">11.6.2 APB 스코어보드 — 메모리 모델 기반 비교</a></li>
+              <li class="subsection-item"><a href="chapter-11-final.html#11-6-3-실행-결과와-커버리지-확인">11.6.3 실행 결과와 커버리지 확인</a></li>
+              <li class="subsection-item"><a href="chapter-11-final.html#11-6-4-part-2-part-3-구조-비교표">11.6.4 Part 2 → Part 3 구조 비교표</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-11-final.html#11-7-체크포인트">11.7 체크포인트</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-11-final.html#11-7-1-셀프-체크">11.7.1 셀프 체크</a></li>
+              <li class="subsection-item"><a href="chapter-11-final.html#11-7-2-연습문제">11.7.2 연습문제</a></li>
+              <li class="subsection-item"><a href="chapter-11-final.html#11-7-3-이-챕터에서-배운-것">11.7.3 이 챕터에서 배운 것</a></li>
+              <li class="subsection-item"><a href="chapter-11-final.html#11-7-4-다음-장-미리보기">11.7.4 다음 장 미리보기</a></li>
+            </ul>
+          </li>
+        </ul>
+</div>
+        </div>
+      </div>
+
+      <!-- Ch.12 -->
+      <div class="ch-card open">
+        <div class="ch-header" onclick="toggleCard(this)">
+          <span class="ch-num">12</span>
+          <div class="ch-info">
+            <div class="ch-title-row">
+              <a class="ch-title" href="chapter-12-final.html">레지스터 모델 (RAL)</a>
+              <span class="ch-meta">1,194줄</span>
+            </div>
+            <div class="ch-keywords">
+              <span class="kw-tag">uvm_reg</span><span class="kw-tag">Adapter</span><span
+                class="kw-tag">Frontdoor</span><span class="kw-tag">Backdoor</span>
+            </div>
+          </div>
+          <span class="ch-toggle">&#9660;</span>
+        </div>
+        <div class="ch-body">
+          <div class="ch-sections">
+<ul style="list-style:none;padding:0">
+          <li class="section-item"><a href="chapter-12-final.html#12-1-왜-레지스터-모델이-필요한가">12.1 왜 레지스터 모델이 필요한가</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-12-final.html#12-1-1-ch-11-방식의-한계-수동-검증">12.1.1 Ch.11 방식의 한계 — 수동 검증</a></li>
+              <li class="subsection-item"><a href="chapter-12-final.html#12-1-2-ral이란-레지스터-추상화-계층">12.1.2 RAL이란? — 레지스터 추상화 계층</a></li>
+              <li class="subsection-item"><a href="chapter-12-final.html#12-1-3-ral-아키텍처">12.1.3 RAL 아키텍처</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-12-final.html#12-2-ral-구성-요소">12.2 RAL 구성 요소</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-12-final.html#12-2-1-uvm-reg-field-비트-필드-정의">12.2.1 uvm_reg_field — 비트 필드 정의</a></li>
+              <li class="subsection-item"><a href="chapter-12-final.html#12-2-2-uvm-reg-레지스터-정의">12.2.2 uvm_reg — 레지스터 정의</a></li>
+              <li class="subsection-item"><a href="chapter-12-final.html#12-2-3-uvm-reg-block과-uvm-reg-map-주소-매핑">12.2.3 uvm_reg_block과 uvm_reg_map — 주소 매핑</a></li>
+              <li class="subsection-item"><a href="chapter-12-final.html#12-2-4-계층-구조-요약">12.2.4 계층 구조 요약</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-12-final.html#12-3-apb-slave-memory-레지스터-모델">12.3 APB Slave Memory 레지스터 모델</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-12-final.html#12-3-1-레지스터-사양-정의">12.3.1 레지스터 사양 정의</a></li>
+              <li class="subsection-item"><a href="chapter-12-final.html#12-3-2-레지스터-클래스-구현">12.3.2 레지스터 클래스 구현</a></li>
+              <li class="subsection-item"><a href="chapter-12-final.html#12-3-3-레지스터-블록-구현">12.3.3 레지스터 블록 구현</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-12-final.html#12-4-ral과-apb-에이전트-연결">12.4 RAL과 APB 에이전트 연결</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-12-final.html#12-4-1-adapter-트랜잭션-변환기">12.4.1 Adapter — 트랜잭션 변환기</a></li>
+              <li class="subsection-item"><a href="chapter-12-final.html#12-4-2-predictor-자동-미러링">12.4.2 Predictor — 자동 미러링</a></li>
+              <li class="subsection-item"><a href="chapter-12-final.html#12-4-3-환경에-ral-통합">12.4.3 환경에 RAL 통합</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-12-final.html#12-5-ral-기본-동작">12.5 RAL 기본 동작</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-12-final.html#12-5-1-frontdoor-읽기-쓰기">12.5.1 Frontdoor 읽기/쓰기</a></li>
+              <li class="subsection-item"><a href="chapter-12-final.html#12-5-2-ral-시퀀스-작성">12.5.2 RAL 시퀀스 작성</a></li>
+              <li class="subsection-item"><a href="chapter-12-final.html#12-5-3-첫-ral-시뮬레이션">12.5.3 첫 RAL 시뮬레이션</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-12-final.html#12-6-내장-시퀀스와-백도어">12.6 내장 시퀀스와 백도어</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-12-final.html#12-6-1-uvm-reg-hw-reset-seq-리셋-값-검증">12.6.1 uvm_reg_hw_reset_seq — 리셋 값 검증</a></li>
+              <li class="subsection-item"><a href="chapter-12-final.html#12-6-2-uvm-reg-bit-bash-seq-비트-접근-검증">12.6.2 uvm_reg_bit_bash_seq — 비트 접근 검증</a></li>
+              <li class="subsection-item"><a href="chapter-12-final.html#12-6-3-backdoor-접근-dut-직접-읽기-쓰기">12.6.3 Backdoor 접근 — DUT 직접 읽기/쓰기</a></li>
+              <li class="subsection-item"><a href="chapter-12-final.html#12-6-4-ch-11-수동-검증-vs-ral-자동-검증-비교">12.6.4 Ch.11 수동 검증 vs RAL 자동 검증 비교</a></li>
+              <li class="subsection-item"><a href="chapter-12-final.html#12-6-5-ral-자주-하는-실수-top-5">12.6.5 RAL 자주 하는 실수 Top 5</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-12-final.html#12-7-체크포인트">12.7 체크포인트</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-12-final.html#12-7-1-셀프-체크">12.7.1 셀프 체크</a></li>
+              <li class="subsection-item"><a href="chapter-12-final.html#12-7-2-연습문제">12.7.2 연습문제</a></li>
+              <li class="subsection-item"><a href="chapter-12-final.html#12-7-3-이-챕터에서-배운-것">12.7.3 이 챕터에서 배운 것</a></li>
+              <li class="subsection-item"><a href="chapter-12-final.html#12-7-4-다음-장-미리보기">12.7.4 다음 장 미리보기</a></li>
+            </ul>
+          </li>
+        </ul>
+</div>
+        </div>
+      </div>
+
+      <!-- Ch.13 -->
+      <div class="ch-card open">
+        <div class="ch-header" onclick="toggleCard(this)">
+          <span class="ch-num">13</span>
+          <div class="ch-info">
+            <div class="ch-title-row">
+              <a class="ch-title" href="chapter-13-final.html">고급 시퀀스</a>
+              <span class="ch-meta">1,471줄</span>
+            </div>
+            <div class="ch-keywords">
+              <span class="kw-tag">Virtual Sequencer</span><span class="kw-tag">Sequence Library</span><span
+                class="kw-tag">Layered Sequence</span>
+            </div>
+          </div>
+          <span class="ch-toggle">&#9660;</span>
+        </div>
+        <div class="ch-body">
+          <div class="ch-sections">
+<ul style="list-style:none;padding:0">
+          <li class="section-item"><a href="chapter-13-final.html#13-1-왜-고급-시퀀스가-필요한가">13.1 왜 고급 시퀀스가 필요한가</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-13-final.html#13-1-1-ch-6-방식의-한계-단일-에이전트">13.1.1 Ch.6 방식의 한계 — 단일 에이전트</a></li>
+              <li class="subsection-item"><a href="chapter-13-final.html#13-1-2-실무-soc-검증-다중-에이전트-문제">13.1.2 실무 SoC 검증 — 다중 에이전트 문제</a></li>
+              <li class="subsection-item"><a href="chapter-13-final.html#13-1-3-고급-시퀀스-로드맵">13.1.3 고급 시퀀스 로드맵</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-13-final.html#13-2-가상-시퀀서-virtual-sequencer">13.2 가상 시퀀서 (Virtual Sequencer)</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-13-final.html#13-2-1-가상-시퀀서란-오케스트라-지휘자">13.2.1 가상 시퀀서란 — 오케스트라 지휘자</a></li>
+              <li class="subsection-item"><a href="chapter-13-final.html#13-2-2-가상-시퀀서-구현">13.2.2 가상 시퀀서 구현</a></li>
+              <li class="subsection-item"><a href="chapter-13-final.html#13-2-3-환경에-가상-시퀀서-통합">13.2.3 환경에 가상 시퀀서 통합</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-13-final.html#13-3-가상-시퀀스-virtual-sequence">13.3 가상 시퀀스 (Virtual Sequence)</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-13-final.html#13-3-1-가상-시퀀스란-악보">13.3.1 가상 시퀀스란 — 악보</a></li>
+              <li class="subsection-item"><a href="chapter-13-final.html#13-3-2-가상-시퀀스-구현">13.3.2 가상 시퀀스 구현</a></li>
+              <li class="subsection-item"><a href="chapter-13-final.html#13-3-3-p-sequencer로-시퀀서-접근">13.3.3 p_sequencer로 시퀀서 접근</a></li>
+              <li class="subsection-item"><a href="chapter-13-final.html#13-3-4-첫-가상-시퀀스-시뮬레이션">13.3.4 첫 가상 시퀀스 시뮬레이션</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-13-final.html#13-4-시퀀스-라이브러리-sequence-library">13.4 시퀀스 라이브러리 (Sequence Library)</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-13-final.html#13-4-1-왜-시퀀스-라이브러리가-필요한가">13.4.1 왜 시퀀스 라이브러리가 필요한가</a></li>
+              <li class="subsection-item"><a href="chapter-13-final.html#13-4-2-uvm-sequence-library-구현">13.4.2 uvm_sequence_library 구현</a></li>
+              <li class="subsection-item"><a href="chapter-13-final.html#13-4-3-시퀀스-선택-모드">13.4.3 시퀀스 선택 모드</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-13-final.html#13-5-고급-시퀀스-패턴">13.5 고급 시퀀스 패턴</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-13-final.html#13-5-1-계층적-시퀀스-layered-sequences">13.5.1 계층적 시퀀스 (Layered Sequences)</a></li>
+              <li class="subsection-item"><a href="chapter-13-final.html#13-5-2-시퀀스와-config-db-연동">13.5.2 시퀀스와 config_db 연동</a></li>
+              <li class="subsection-item"><a href="chapter-13-final.html#13-5-3-시퀀스에서-ral-사용">13.5.3 시퀀스에서 RAL 사용</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-13-final.html#13-6-실전-통합-apb-ral-가상-시퀀스">13.6 실전 통합: APB + RAL 가상 시퀀스</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-13-final.html#13-6-1-통합-환경-구성">13.6.1 통합 환경 구성</a></li>
+              <li class="subsection-item"><a href="chapter-13-final.html#13-6-2-apb-ral-조합-시나리오">13.6.2 APB + RAL 조합 시나리오</a></li>
+              <li class="subsection-item"><a href="chapter-13-final.html#13-6-3-ch-6-기본-시퀀스-vs-ch-13-고급-시퀀스-비교">13.6.3 Ch.6 기본 시퀀스 vs Ch.13 고급 시퀀스 비교</a></li>
+              <li class="subsection-item"><a href="chapter-13-final.html#13-6-4-실무-시퀀스-전략-가이드">13.6.4 실무 시퀀스 전략 가이드</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-13-final.html#13-7-체크포인트">13.7 체크포인트</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-13-final.html#13-7-1-셀프-체크">13.7.1 셀프 체크</a></li>
+              <li class="subsection-item"><a href="chapter-13-final.html#13-7-2-연습문제">13.7.2 연습문제</a></li>
+              <li class="subsection-item"><a href="chapter-13-final.html#13-7-3-이-챕터에서-배운-것">13.7.3 이 챕터에서 배운 것</a></li>
+              <li class="subsection-item"><a href="chapter-13-final.html#13-7-4-다음-장-미리보기">13.7.4 다음 장 미리보기</a></li>
+            </ul>
+          </li>
+        </ul>
+</div>
+        </div>
+      </div>
+
+      <!-- Ch.14 -->
+      <div class="ch-card open">
+        <div class="ch-header" onclick="toggleCard(this)">
+          <span class="ch-num">14</span>
+          <div class="ch-info">
+            <div class="ch-title-row">
+              <a class="ch-title" href="chapter-14-final.html">검증 자동화</a>
+              <span class="ch-meta">1,211줄 &middot; SVG 4</span>
+            </div>
+            <div class="ch-keywords">
+              <span class="kw-tag">Coverage</span><span class="kw-tag">SVA</span><span
+                class="kw-tag">Assertion</span><span class="kw-tag">Coverage Closure</span>
+            </div>
+          </div>
+          <span class="ch-toggle">&#9660;</span>
+        </div>
+        <div class="ch-body">
+          <div class="ch-sections">
+<ul style="list-style:none;padding:0">
+          <li class="section-item"><a href="chapter-14-final.html#14-1-왜-검증-자동화가-필요한가">14.1 왜 검증 자동화가 필요한가</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-14-final.html#14-1-1-quot-검증이-충분한가-quot-커버리지의-필요성">14.1.1 &quot;검증이 충분한가?&quot; — 커버리지의 필요성</a></li>
+              <li class="subsection-item"><a href="chapter-14-final.html#14-1-2-quot-프로토콜을-위반했는가-quot-어서션의-필요성">14.1.2 &quot;프로토콜을 위반했는가?&quot; — 어서션의 필요성</a></li>
+              <li class="subsection-item"><a href="chapter-14-final.html#14-1-3-검증-자동화-아키텍처">14.1.3 검증 자동화 아키텍처</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-14-final.html#14-2-기능-커버리지-기초">14.2 기능 커버리지 기초</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-14-final.html#14-2-1-covergroup과-coverpoint">14.2.1 covergroup과 coverpoint</a></li>
+              <li class="subsection-item"><a href="chapter-14-final.html#14-2-2-bins-값-분류하기">14.2.2 bins — 값 분류하기</a></li>
+              <li class="subsection-item"><a href="chapter-14-final.html#14-2-3-cross-교차-커버리지">14.2.3 cross — 교차 커버리지</a></li>
+              <li class="subsection-item"><a href="chapter-14-final.html#14-2-4-커버리지-옵션과-리포트">14.2.4 커버리지 옵션과 리포트</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-14-final.html#14-3-apb-커버리지-모델">14.3 APB 커버리지 모델</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-14-final.html#14-3-1-apb-트랜잭션-커버리지-설계">14.3.1 APB 트랜잭션 커버리지 설계</a></li>
+              <li class="subsection-item"><a href="chapter-14-final.html#14-3-2-uvm-커버리지-컬렉터-구현">14.3.2 UVM 커버리지 컬렉터 구현</a></li>
+              <li class="subsection-item"><a href="chapter-14-final.html#14-3-3-환경에-커버리지-컬렉터-통합">14.3.3 환경에 커버리지 컬렉터 통합</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-14-final.html#14-4-systemverilog-어서션-sva">14.4 SystemVerilog 어서션 (SVA)</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-14-final.html#14-4-1-즉시-어서션-immediate-assertion">14.4.1 즉시 어서션 (Immediate Assertion)</a></li>
+              <li class="subsection-item"><a href="chapter-14-final.html#14-4-2-동시-어서션-concurrent-assertion">14.4.2 동시 어서션 (Concurrent Assertion)</a></li>
+              <li class="subsection-item"><a href="chapter-14-final.html#14-4-3-시퀀스와-프로퍼티">14.4.3 시퀀스와 프로퍼티</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-14-final.html#14-5-apb-프로토콜-어서션">14.5 APB 프로토콜 어서션</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-14-final.html#14-5-1-apb-프로토콜-규칙-정리">14.5.1 APB 프로토콜 규칙 정리</a></li>
+              <li class="subsection-item"><a href="chapter-14-final.html#14-5-2-어서션-모듈-구현">14.5.2 어서션 모듈 구현</a></li>
+              <li class="subsection-item"><a href="chapter-14-final.html#14-5-3-어서션과-환경-연결">14.5.3 어서션과 환경 연결</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-14-final.html#14-6-커버리지-클로저-전략">14.6 커버리지 클로저 전략</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-14-final.html#14-6-1-커버리지-리포트-분석">14.6.1 커버리지 리포트 분석</a></li>
+              <li class="subsection-item"><a href="chapter-14-final.html#14-6-2-커버리지-기반-테스트-전략">14.6.2 커버리지 기반 테스트 전략</a></li>
+              <li class="subsection-item"><a href="chapter-14-final.html#14-6-3-ch-11-14-검증-인프라-종합">14.6.3 Ch.11~14 검증 인프라 종합</a></li>
+              <li class="subsection-item"><a href="chapter-14-final.html#14-6-4-실무-커버리지-어서션-가이드">14.6.4 실무 커버리지/어서션 가이드</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-14-final.html#14-7-체크포인트">14.7 체크포인트</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-14-final.html#14-7-1-셀프-체크">14.7.1 셀프 체크</a></li>
+              <li class="subsection-item"><a href="chapter-14-final.html#14-7-2-연습문제">14.7.2 연습문제</a></li>
+              <li class="subsection-item"><a href="chapter-14-final.html#14-7-3-이-챕터에서-배운-것">14.7.3 이 챕터에서 배운 것</a></li>
+              <li class="subsection-item"><a href="chapter-14-final.html#14-7-4-다음-장-미리보기">14.7.4 다음 장 미리보기</a></li>
+            </ul>
+          </li>
+        </ul>
+</div>
+        </div>
+      </div>
+
+      <!-- Ch.15 -->
+      <div class="ch-card open">
+        <div class="ch-header" onclick="toggleCard(this)">
+          <span class="ch-num">15</span>
+          <div class="ch-info">
+            <div class="ch-title-row">
+              <a class="ch-title" href="chapter-15-final.html">면접 준비 &amp; 포트폴리오</a>
+              <span class="ch-meta">1,586줄 &middot; SVG 6</span>
+            </div>
+            <div class="ch-keywords">
+              <span class="kw-tag">면접 질문 30선</span><span class="kw-tag">코드 리뷰</span><span
+                class="kw-tag">GitHub</span><span class="kw-tag">이력서</span>
+            </div>
+          </div>
+          <span class="ch-toggle">&#9660;</span>
+        </div>
+        <div class="ch-body">
+          <div class="ch-sections">
+<ul style="list-style:none;padding:0">
+          <li class="section-item"><a href="chapter-15-final.html#15-1-팹리스-검증-엔지니어-취업-로드맵">15.1 팹리스 검증 엔지니어 취업 로드맵</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-15-final.html#15-1-1-팹리스-검증팀의-하루">15.1.1 팹리스 검증팀의 하루</a></li>
+              <li class="subsection-item"><a href="chapter-15-final.html#15-1-2-채용-프로세스-이해하기">15.1.2 채용 프로세스 이해하기</a></li>
+              <li class="subsection-item"><a href="chapter-15-final.html#15-1-3-신입-vs-경력의-기대치-차이">15.1.3 신입 vs 경력의 기대치 차이</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-15-final.html#15-2-uvm-면접-빈출-질문-top-30">15.2 UVM 면접 빈출 질문 Top 30</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-15-final.html#15-2-1-기초-개념-10문항">15.2.1 기초 개념 (10문항)</a></li>
+              <li class="subsection-item"><a href="chapter-15-final.html#15-2-2-컴포넌트-amp-아키텍처-10문항">15.2.2 컴포넌트 &amp; 아키텍처 (10문항)</a></li>
+              <li class="subsection-item"><a href="chapter-15-final.html#15-2-3-고급-주제-amp-실무-10문항">15.2.3 고급 주제 &amp; 실무 (10문항)</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-15-final.html#15-3-코드-리뷰-면접-대비">15.3 코드 리뷰 면접 대비</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-15-final.html#15-3-1-quot-이-코드의-문제를-찾아라-quot-유형">15.3.1 &quot;이 코드의 문제를 찾아라&quot; 유형</a></li>
+              <li class="subsection-item"><a href="chapter-15-final.html#15-3-2-quot-이-환경을-개선해라-quot-유형">15.3.2 &quot;이 환경을 개선해라&quot; 유형</a></li>
+              <li class="subsection-item"><a href="chapter-15-final.html#15-3-3-라이브-코딩-팁">15.3.3 라이브 코딩 팁</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-15-final.html#15-4-포트폴리오-프로젝트-구성">15.4 포트폴리오 프로젝트 구성</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-15-final.html#15-4-1-ch-11-14-apb-프로젝트를-포트폴리오로">15.4.1 Ch.11~14 APB 프로젝트를 포트폴리오로</a></li>
+              <li class="subsection-item"><a href="chapter-15-final.html#15-4-2-github-저장소-구조와-readme">15.4.2 GitHub 저장소 구조와 README</a></li>
+              <li class="subsection-item"><a href="chapter-15-final.html#15-4-3-문서화와-시연-가이드">15.4.3 문서화와 시연 가이드</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-15-final.html#15-5-이력서-amp-자기소개서-전략">15.5 이력서 &amp; 자기소개서 전략</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-15-final.html#15-5-1-검증-엔지니어-이력서-작성법">15.5.1 검증 엔지니어 이력서 작성법</a></li>
+              <li class="subsection-item"><a href="chapter-15-final.html#15-5-2-기술-키워드와-성과-표현">15.5.2 기술 키워드와 성과 표현</a></li>
+              <li class="subsection-item"><a href="chapter-15-final.html#15-5-3-자기소개서에서-uvm-경험-어필">15.5.3 자기소개서에서 UVM 경험 어필</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-15-final.html#15-6-실전-면접-시뮬레이션">15.6 실전 면접 시뮬레이션</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-15-final.html#15-6-1-1차-기술-면접-시뮬레이션">15.6.1 1차 기술 면접 시뮬레이션</a></li>
+              <li class="subsection-item"><a href="chapter-15-final.html#15-6-2-2차-심층-면접-시뮬레이션">15.6.2 2차 심층 면접 시뮬레이션</a></li>
+              <li class="subsection-item"><a href="chapter-15-final.html#15-6-3-면접-후-팔로업">15.6.3 면접 후 팔로업</a></li>
+            </ul>
+          </li>
+          <li class="section-item"><a href="chapter-15-final.html#15-7-체크포인트">15.7 체크포인트</a>
+            <ul class="subsection-list">
+              <li class="subsection-item"><a href="chapter-15-final.html#15-7-1-셀프-체크">15.7.1 셀프 체크</a></li>
+              <li class="subsection-item"><a href="chapter-15-final.html#15-7-2-연습문제">15.7.2 연습문제</a></li>
+              <li class="subsection-item"><a href="chapter-15-final.html#15-7-3-이-챕터에서-배운-것">15.7.3 이 챕터에서 배운 것</a></li>
+              <li class="subsection-item"><a href="chapter-15-final.html#15-7-4-전체-책-마무리-ch-1-15-학습-로드맵">15.7.4 전체 책 마무리 — Ch.1~15 학습 로드맵</a></li>
+            </ul>
+          </li>
+        </ul>
+</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== DASHBOARD ========== -->
+    <section class="dashboard">
+      <h2>챕터별 분량</h2>
+      <div class="chart-container">
+        <div class="bar-row"><span class="bar-label">Ch.1 UVM 소개</span>
+          <div class="bar-track">
+            <div class="bar-fill p1" style="width:59.5%">944</div>
+          </div>
+        </div>
+        <div class="bar-row"><span class="bar-label">Ch.2 환경 설정</span>
+          <div class="bar-track">
+            <div class="bar-fill p1" style="width:52.2%">828</div>
+          </div>
+        </div>
+        <div class="bar-row"><span class="bar-label">Ch.3 SV 핵심</span>
+          <div class="bar-track">
+            <div class="bar-fill p1" style="width:76.9%">1,220</div>
+          </div>
+        </div>
+        <div class="bar-row"><span class="bar-label">Ch.4 기본 컴포넌트</span>
+          <div class="bar-track">
+            <div class="bar-fill p1" style="width:79.3%">1,257</div>
+          </div>
+        </div>
+        <div class="bar-row"><span class="bar-label">Ch.5 첫 TB</span>
+          <div class="bar-track">
+            <div class="bar-fill p1" style="width:72.3%">1,146</div>
+          </div>
+        </div>
+        <div class="bar-row"><span class="bar-label">Ch.6 시퀀스</span>
+          <div class="bar-track">
+            <div class="bar-fill p2" style="width:80.3%">1,274</div>
+          </div>
+        </div>
+        <div class="bar-row"><span class="bar-label">Ch.7 Driver</span>
+          <div class="bar-track">
+            <div class="bar-fill p2" style="width:74.5%">1,182</div>
+          </div>
+        </div>
+        <div class="bar-row"><span class="bar-label">Ch.8 Scoreboard</span>
+          <div class="bar-track">
+            <div class="bar-fill p2" style="width:75.1%">1,190</div>
+          </div>
+        </div>
+        <div class="bar-row"><span class="bar-label">Ch.9 시나리오</span>
+          <div class="bar-track">
+            <div class="bar-fill p2" style="width:66.1%">1,048</div>
+          </div>
+        </div>
+        <div class="bar-row"><span class="bar-label">Ch.10 디버깅</span>
+          <div class="bar-track">
+            <div class="bar-fill p2" style="width:80.5%">1,277</div>
+          </div>
+        </div>
+        <div class="bar-row"><span class="bar-label">Ch.11 BFM</span>
+          <div class="bar-track">
+            <div class="bar-fill p3" style="width:76.1%">1,207</div>
+          </div>
+        </div>
+        <div class="bar-row"><span class="bar-label">Ch.12 RAL</span>
+          <div class="bar-track">
+            <div class="bar-fill p3" style="width:75.3%">1,194</div>
+          </div>
+        </div>
+        <div class="bar-row"><span class="bar-label">Ch.13 고급 시퀀스</span>
+          <div class="bar-track">
+            <div class="bar-fill p3" style="width:92.7%">1,471</div>
+          </div>
+        </div>
+        <div class="bar-row"><span class="bar-label">Ch.14 검증 자동화</span>
+          <div class="bar-track">
+            <div class="bar-fill p3" style="width:76.4%">1,211</div>
+          </div>
+        </div>
+        <div class="bar-row"><span class="bar-label">Ch.15 면접/취업</span>
+          <div class="bar-track">
+            <div class="bar-fill p3" style="width:100%">1,586</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Learning Path -->
+      <div class="learning-path">
+        <h3>학습 경로 가이드</h3>
+        <svg viewBox="0 0 760 200" xmlns="http://www.w3.org/2000/svg" style="max-width:760px;width:100%">
+          <style>
+            .lp-text {
+              font-family: 'Noto Sans KR', sans-serif;
+              fill: #1e293b;
+            }
+
+            .lp-white {
+              font-family: 'Noto Sans KR', sans-serif;
+              fill: #ffffff;
+            }
+
+            .lp-sub {
+              font-family: 'Noto Sans KR', sans-serif;
+              fill: #64748b;
+              font-size: 10px;
+            }
+          
+    .ch-sections a { text-decoration: none; color: inherit; transition: color 0.15s; }
+    .ch-sections a:hover { color: var(--accent); }
+    
+  </style>
+          <defs>
+            <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+              <polygon points="0 0, 8 3, 0 6" fill="#94a3b8" />
+            </marker>
+          </defs>
+          <!-- Row 1: Part 1 -->
+          <rect x="10" y="10" width="72" height="44" rx="8" fill="#2563eb" />
+          <text x="46" y="30" text-anchor="middle" class="lp-white" font-size="11" font-weight="700">입문</text>
+          <text x="46" y="44" text-anchor="middle" class="lp-white" font-size="9">Ch.1~3</text>
+          <line x1="82" y1="32" x2="105" y2="32" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr)" />
+          <rect x="108" y="10" width="72" height="44" rx="8" fill="#2563eb" />
+          <text x="144" y="30" text-anchor="middle" class="lp-white" font-size="11" font-weight="700">기초</text>
+          <text x="144" y="44" text-anchor="middle" class="lp-white" font-size="9">Ch.4~5</text>
+          <line x1="180" y1="32" x2="203" y2="32" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr)" />
+
+          <!-- Row 1: Part 2 -->
+          <rect x="206" y="10" width="240" height="44" rx="8" fill="#16a34a" />
+          <text x="326" y="30" text-anchor="middle" class="lp-white" font-size="11" font-weight="700">심화</text>
+          <text x="326" y="44" text-anchor="middle" class="lp-white" font-size="9">Ch.6 &rarr; Ch.7 &rarr; Ch.8 &rarr;
+            Ch.9 &rarr; Ch.10</text>
+          <line x1="446" y1="32" x2="469" y2="32" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr)" />
+
+          <!-- Row 1: Part 3 -->
+          <rect x="472" y="10" width="180" height="44" rx="8" fill="#7c3aed" />
+          <text x="562" y="30" text-anchor="middle" class="lp-white" font-size="11" font-weight="700">실무</text>
+          <text x="562" y="44" text-anchor="middle" class="lp-white" font-size="9">Ch.11 &rarr; Ch.12 &rarr; Ch.13
+            &rarr; Ch.14</text>
+          <line x1="652" y1="32" x2="675" y2="32" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr)" />
+
+          <rect x="678" y="6" width="72" height="52" rx="8" fill="#f59e0b" stroke="#f59e0b" stroke-width="2" />
+          <text x="714" y="28" text-anchor="middle" class="lp-text" font-size="11" font-weight="700">취업</text>
+          <text x="714" y="44" text-anchor="middle" class="lp-text" font-size="9" font-weight="600">Ch.15</text>
+
+          <!-- Milestone labels -->
+          <text x="46" y="76" text-anchor="middle" class="lp-sub">SV &amp; UVM</text>
+          <text x="46" y="88" text-anchor="middle" class="lp-sub">개념 이해</text>
+          <text x="144" y="76" text-anchor="middle" class="lp-sub">첫 TB</text>
+          <text x="144" y="88" text-anchor="middle" class="lp-sub">빌드 &amp; 실행</text>
+          <text x="326" y="76" text-anchor="middle" class="lp-sub">컴포넌트 심화 &amp; CDV</text>
+          <text x="326" y="88" text-anchor="middle" class="lp-sub">자동 검증 달성</text>
+          <text x="562" y="76" text-anchor="middle" class="lp-sub">APB 프로토콜</text>
+          <text x="562" y="88" text-anchor="middle" class="lp-sub">RAL + Coverage Closure</text>
+          <text x="714" y="76" text-anchor="middle" class="lp-sub">면접 &amp; 포트폴리오</text>
+          <text x="714" y="88" text-anchor="middle" class="lp-sub">취업 준비 완료!</text>
+
+          <!-- Progress line -->
+          <line x1="10" y1="110" x2="750" y2="110" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" />
+          <line x1="10" y1="110" x2="750" y2="110" stroke="url(#progress-grad)" stroke-width="3"
+            stroke-linecap="round" />
+          <defs>
+            <linearGradient id="progress-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#2563eb" />
+              <stop offset="33%" stop-color="#16a34a" />
+              <stop offset="66%" stop-color="#7c3aed" />
+              <stop offset="100%" stop-color="#f59e0b" />
+            </linearGradient>
+          </defs>
+          <!-- Chapter dots -->
+          <circle cx="10" cy="110" r="5" fill="#2563eb" /><text x="10" y="128" text-anchor="middle"
+            class="lp-sub">1</text>
+          <circle cx="60" cy="110" r="4" fill="#2563eb" /><text x="60" y="128" text-anchor="middle"
+            class="lp-sub">2</text>
+          <circle cx="110" cy="110" r="4" fill="#2563eb" /><text x="110" y="128" text-anchor="middle"
+            class="lp-sub">3</text>
+          <circle cx="160" cy="110" r="4" fill="#2563eb" /><text x="160" y="128" text-anchor="middle"
+            class="lp-sub">4</text>
+          <circle cx="210" cy="110" r="4" fill="#2563eb" /><text x="210" y="128" text-anchor="middle"
+            class="lp-sub">5</text>
+          <circle cx="270" cy="110" r="4" fill="#16a34a" /><text x="270" y="128" text-anchor="middle"
+            class="lp-sub">6</text>
+          <circle cx="330" cy="110" r="4" fill="#16a34a" /><text x="330" y="128" text-anchor="middle"
+            class="lp-sub">7</text>
+          <circle cx="390" cy="110" r="4" fill="#16a34a" /><text x="390" y="128" text-anchor="middle"
+            class="lp-sub">8</text>
+          <circle cx="440" cy="110" r="4" fill="#16a34a" /><text x="440" y="128" text-anchor="middle"
+            class="lp-sub">9</text>
+          <circle cx="490" cy="110" r="4" fill="#16a34a" /><text x="490" y="128" text-anchor="middle"
+            class="lp-sub">10</text>
+          <circle cx="545" cy="110" r="4" fill="#7c3aed" /><text x="545" y="128" text-anchor="middle"
+            class="lp-sub">11</text>
+          <circle cx="595" cy="110" r="4" fill="#7c3aed" /><text x="595" y="128" text-anchor="middle"
+            class="lp-sub">12</text>
+          <circle cx="645" cy="110" r="4" fill="#7c3aed" /><text x="645" y="128" text-anchor="middle"
+            class="lp-sub">13</text>
+          <circle cx="695" cy="110" r="4" fill="#7c3aed" /><text x="695" y="128" text-anchor="middle"
+            class="lp-sub">14</text>
+          <circle cx="745" cy="110" r="6" fill="#f59e0b" stroke="#f59e0b" stroke-width="2" /><text x="745" y="128"
+            text-anchor="middle" class="lp-sub" font-weight="700">15</text>
+        </svg>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    팹리스 검증 엔지니어가 되기 위한 UVM 완전정복 &mdash; 전체 15개 챕터 &middot; 18,035줄 &middot; 66 SVG
+  </footer>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Make both chapter titles and subsection links communicate with the parent window using postMessage to bypass file:// CORS
+      const allLinks = document.querySelectorAll('a[href^="chapter-"]');
+      allLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          if (window.parent !== window) {
+            e.preventDefault();
+            const href = link.getAttribute('href');
+            window.parent.postMessage({ type: 'sync_toc', href: href }, '*');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+
+
+</html>

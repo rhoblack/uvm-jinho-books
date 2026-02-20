@@ -1,0 +1,31 @@
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-14-final.html#14-1-왜-검증-자동화가-필요한가">14.1 왜 검증 자동화가 필요한가</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-1-1-quot-검증이-충분한가-quot-커버리지의-필요성">14.1.1 &quot;검증이 충분한가?&quot; — 커버리지의 필요성</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-1-2-quot-프로토콜을-위반했는가-quot-어서션의-필요성">14.1.2 &quot;프로토콜을 위반했는가?&quot; — 어서션의 필요성</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-1-3-검증-자동화-아키텍처">14.1.3 검증 자동화 아키텍처</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-14-final.html#14-2-기능-커버리지-기초">14.2 기능 커버리지 기초</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-2-1-covergroup과-coverpoint">14.2.1 covergroup과 coverpoint</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-2-2-bins-값-분류하기">14.2.2 bins — 값 분류하기</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-2-3-cross-교차-커버리지">14.2.3 cross — 교차 커버리지</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-2-4-커버리지-옵션과-리포트">14.2.4 커버리지 옵션과 리포트</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-14-final.html#14-3-apb-커버리지-모델">14.3 APB 커버리지 모델</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-3-1-apb-트랜잭션-커버리지-설계">14.3.1 APB 트랜잭션 커버리지 설계</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-3-2-uvm-커버리지-컬렉터-구현">14.3.2 UVM 커버리지 컬렉터 구현</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-3-3-환경에-커버리지-컬렉터-통합">14.3.3 환경에 커버리지 컬렉터 통합</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-14-final.html#14-4-systemverilog-어서션-sva">14.4 SystemVerilog 어서션 (SVA)</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-4-1-즉시-어서션-immediate-assertion">14.4.1 즉시 어서션 (Immediate Assertion)</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-4-2-동시-어서션-concurrent-assertion">14.4.2 동시 어서션 (Concurrent Assertion)</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-4-3-시퀀스와-프로퍼티">14.4.3 시퀀스와 프로퍼티</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-14-final.html#14-5-apb-프로토콜-어서션">14.5 APB 프로토콜 어서션</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-5-1-apb-프로토콜-규칙-정리">14.5.1 APB 프로토콜 규칙 정리</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-5-2-어서션-모듈-구현">14.5.2 어서션 모듈 구현</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-5-3-어서션과-환경-연결">14.5.3 어서션과 환경 연결</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-14-final.html#14-6-커버리지-클로저-전략">14.6 커버리지 클로저 전략</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-6-1-커버리지-리포트-분석">14.6.1 커버리지 리포트 분석</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-6-2-커버리지-기반-테스트-전략">14.6.2 커버리지 기반 테스트 전략</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-6-3-ch-11-14-검증-인프라-종합">14.6.3 Ch.11~14 검증 인프라 종합</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-6-4-실무-커버리지-어서션-가이드">14.6.4 실무 커버리지/어서션 가이드</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-14-final.html#14-7-체크포인트">14.7 체크포인트</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-7-1-셀프-체크">14.7.1 셀프 체크</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-7-2-연습문제">14.7.2 연습문제</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-7-3-이-챕터에서-배운-것">14.7.3 이 챕터에서 배운 것</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-14-final.html#14-7-4-다음-장-미리보기">14.7.4 다음 장 미리보기</a>

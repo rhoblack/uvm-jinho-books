@@ -1,0 +1,30 @@
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-02-final.html#2-1-시뮬레이터란-무엇인가">2.1 시뮬레이터란 무엇인가?</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-1-1-시뮬레이터의-역할">2.1.1 시뮬레이터의 역할</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-1-2-주요-상용-시뮬레이터">2.1.2 주요 상용 시뮬레이터</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-1-3-무료-실습-환경-선택지">2.1.3 무료 실습 환경 선택지</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-02-final.html#2-2-eda-playground로-바로-시작하기">2.2 EDA Playground로 바로 시작하기</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-2-1-eda-playground란">2.2.1 EDA Playground란?</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-2-2-eda-playground-설정-확인">2.2.2 EDA Playground 설정 확인</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-2-3-첫-uvm-코드-실행하기-10분">2.2.3 첫 UVM 코드 실행하기 (10분)</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-2-4-출력-결과-해석하기">2.2.4 출력 결과 해석하기</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-2-5-자주-발생하는-에러와-해결법">2.2.5 자주 발생하는 에러와 해결법</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-02-final.html#2-3-uvm-코드-구조-이해하기">2.3 UVM 코드 구조 이해하기</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-3-1-uvm-프로그램의-기본-뼈대">2.3.1 UVM 프로그램의 기본 뼈대</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-02-final.html#2-4-실습-uvm-코드-수정해보기">2.4 실습: UVM 코드 수정해보기</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-4-1-실습-1-메시지-바꿔보기-쉬움">2.4.1 실습 1: 메시지 바꿔보기 (쉬움)</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-4-2-실습-2-여러-페이즈-phase-체험하기-보통">2.4.2 실습 2: 여러 페이즈(Phase) 체험하기 (보통)</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-4-3-실습-3-반복-테스트-만들기-보통">2.4.3 실습 3: 반복 테스트 만들기 (보통)</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-02-final.html#2-5-로컬-환경-설정-선택-사항">2.5 로컬 환경 설정 (선택 사항)</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-5-1-왜-로컬-환경이-필요할까">2.5.1 왜 로컬 환경이 필요할까?</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-5-2-운영체제-준비">2.5.2 운영체제 준비</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-5-3-questa-intel-fpga-edition-설치">2.5.3 Questa (Intel FPGA Edition) 설치</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-5-4-uvm-라이브러리-설정">2.5.4 UVM 라이브러리 설정</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-5-5-첫-로컬-컴파일-테스트">2.5.5 첫 로컬 컴파일 테스트</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-02-final.html#2-6-uvm-프로젝트-디렉토리-구조">2.6 UVM 프로젝트 디렉토리 구조</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-6-1-실무-표준-디렉토리-구조">2.6.1 실무 표준 디렉토리 구조</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-6-2-각-디렉토리의-역할">2.6.2 각 디렉토리의 역할</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#2-6-3-간단한-makefile-맛보기">2.6.3 간단한 Makefile 맛보기</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-02-final.html#2-7-체크포인트">2.7 체크포인트</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#셀프-체크">셀프 체크</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#연습문제">연습문제</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-02-final.html#다음-챕터-미리보기">다음 챕터 미리보기</a>

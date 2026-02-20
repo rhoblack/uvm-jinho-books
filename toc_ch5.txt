@@ -1,0 +1,28 @@
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-05-final.html#5-1-dut-소개-4비트-업카운터">5.1 DUT 소개 — 4비트 업카운터</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#5-1-1-검증할-대상-4비트-카운터">5.1.1 검증할 대상: 4비트 카운터</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#5-1-2-interface-정의">5.1.2 Interface 정의</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-05-final.html#5-2-virtual-interface-왜-필요한가">5.2 Virtual Interface — 왜 필요한가</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#5-2-1-문제-class에서-interface에-접근할-수-없다">5.2.1 문제: class에서 interface에 접근할 수 없다</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#5-2-2-해결-virtual-interface">5.2.2 해결: virtual interface</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#5-2-3-virtual-interface-선언과-사용">5.2.3 virtual interface 선언과 사용</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#5-2-4-흔한-실수-virtual-interface를-연결-안-하면">5.2.4 흔한 실수: virtual interface를 연결 안 하면?</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-05-final.html#5-3-uvm-config-db-설정값-전달-메커니즘">5.3 uvm_config_db — 설정값 전달 메커니즘</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#5-3-1-config-db가-필요한-이유">5.3.1 config_db가 필요한 이유</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#5-3-2-config-db-사용법-set-과-get">5.3.2 config_db 사용법: set()과 get()</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#5-3-3-set-get-패턴-정리">5.3.3 set/get 패턴 정리</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#5-3-4-흔한-실수-config-db-get-실패">5.3.4 흔한 실수: config_db get 실패</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#5-3-5-실습-config-db로-virtual-interface-전달">5.3.5 실습: config_db로 virtual interface 전달</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-05-final.html#5-4-드라이버와-모니터-기초">5.4 드라이버와 모니터 기초</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#5-4-1-드라이버-신호를-보내는-역할">5.4.1 드라이버 = 신호를 보내는 역할</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#5-4-2-모니터-신호를-관찰하는-역할">5.4.2 모니터 = 신호를 관찰하는 역할</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#5-4-3-에이전트-드라이버-모니터-묶음">5.4.3 에이전트 = 드라이버 + 모니터 묶음</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-05-final.html#5-5-종합-첫-완전한-uvm-테스트벤치">5.5 종합: 첫 완전한 UVM 테스트벤치</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#5-5-1-전체-구조-한눈에-보기">5.5.1 전체 구조 한눈에 보기</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#5-5-2-단계별-빌드업">5.5.2 단계별 빌드업</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#5-5-3-코드-구조-정리">5.5.3 코드 구조 정리</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-05-final.html#5-6-체크포인트">5.6 체크포인트</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#셀프-체크">셀프 체크</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#연습문제">연습문제</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#흔한-에러와-해결법">흔한 에러와 해결법</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#용어-정리">용어 정리</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-05-final.html#다음-챕터-미리보기">다음 챕터 미리보기</a>

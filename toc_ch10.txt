@@ -1,0 +1,36 @@
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-10-final.html#10-1-왜-체계적-디버깅인가">10.1 왜 체계적 디버깅인가</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-1-1-quot-파형만-보면-되지-quot-실무의-현실">10.1.1 &quot;파형만 보면 되지?&quot; — 실무의 현실</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-1-2-uvm-디버깅-도구-전체-맵">10.1.2 UVM 디버깅 도구 전체 맵</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-1-3-디버깅-워크플로우">10.1.3 디버깅 워크플로우</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-10-final.html#10-2-uvm-메시지-시스템">10.2 UVM 메시지 시스템</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-2-1-4가지-심각도-uvm-info-warning-error-fatal">10.2.1 4가지 심각도 — UVM_INFO / WARNING / ERROR / FATAL</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-2-2-verbosity-레벨-low-medium-high-debug">10.2.2 Verbosity 레벨 — LOW / MEDIUM / HIGH / DEBUG</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-2-3-명령줄-verbosity-제어-uvm-verbosity">10.2.3 명령줄 Verbosity 제어 (+UVM_VERBOSITY)</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-2-4-컴포넌트별-verbosity-제어">10.2.4 컴포넌트별 Verbosity 제어</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-2-5-메시지-필터링-실전-예제">10.2.5 메시지 필터링 실전 예제</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-10-final.html#10-3-파형-분석">10.3 파형 분석</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-3-1-vcd-fsdb-파일-생성">10.3.1 VCD/FSDB 파일 생성</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-3-2-파형-뷰어-dve-verdi-gtkwave">10.3.2 파형 뷰어 — DVE, Verdi, GTKWave</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-3-3-rtl-신호와-uvm-로그-타임스탬프-연결">10.3.3 RTL 신호와 UVM 로그 타임스탬프 연결</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-3-4-실전-mismatch-시점-파형-확인">10.3.4 실전: MISMATCH 시점 파형 확인</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-10-final.html#10-4-factory-override-디버깅">10.4 Factory Override 디버깅</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-4-1-디버그-드라이버-교체-상세-로깅-버전">10.4.1 디버그 드라이버 교체 — 상세 로깅 버전</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-4-2-런타임-컴포넌트-교환-패턴">10.4.2 런타임 컴포넌트 교환 패턴</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-4-3-실전-드라이버-vs-모니터-문제-분리">10.4.3 실전: 드라이버 vs 모니터 문제 분리</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-10-final.html#10-5-흔한-uvm-에러-메시지-해석">10.5 흔한 UVM 에러 메시지 해석</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-5-1-연결-에러-quot-port-is-not-connected-quot">10.5.1 연결 에러 — &quot;port is not connected&quot;</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-5-2-factory-에러-quot-create-failed-quot">10.5.2 Factory 에러 — &quot;create failed&quot;</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-5-3-phase-에러-quot-objection-raised-but-not-dropped-quot">10.5.3 Phase 에러 — &quot;objection raised but not dropped&quot;</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-5-4-randomization-에러-quot-randomize-failed-quot">10.5.4 Randomization 에러 — &quot;randomize() failed&quot;</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-5-5-config-db-에러-quot-config-db-get-failed-quot">10.5.5 Config DB 에러 — &quot;config_db::get failed&quot;</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-5-6-에러-메시지-빠른-참조-표">10.5.6 에러 메시지 빠른 참조 표</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-10-final.html#10-6-실전-mismatch-원인-찾기">10.6 실전: MISMATCH 원인 찾기</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-6-1-시나리오-의도적-버그-주입">10.6.1 시나리오 — 의도적 버그 주입</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-6-2-단계별-디버깅-프로세스">10.6.2 단계별 디버깅 프로세스</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-6-3-원인-발견-및-수정">10.6.3 원인 발견 및 수정</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-6-4-수정-검증-regression-확인">10.6.4 수정 검증 — regression 확인</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-10-final.html#10-7-체크포인트">10.7 체크포인트</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-7-1-셀프-체크">10.7.1 셀프 체크</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-7-2-연습문제">10.7.2 연습문제</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#10-7-3-part-2-마무리-amp-part-3-미리보기">10.7.3 Part 2 마무리 &amp; Part 3 미리보기</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-10-final.html#다음-장-미리보기">다음 장 미리보기</a>

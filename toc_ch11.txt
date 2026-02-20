@@ -1,0 +1,32 @@
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-11-final.html#11-1-4비트-카운터를-졸업하며">11.1 4비트 카운터를 졸업하며</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-1-1-part-2에서-배운-것-구조는-같다">11.1.1 Part 2에서 배운 것 — 구조는 같다</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-1-2-실무-프로토콜이란-apb-소개">11.1.2 실무 프로토콜이란? — APB 소개</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-1-3-apb-프로토콜-기본-동작">11.1.3 APB 프로토콜 기본 동작</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-11-final.html#11-2-systemverilog-인터페이스-심화">11.2 SystemVerilog 인터페이스 심화</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-2-1-clocking-block-타이밍-안전한-신호-접근">11.2.1 Clocking Block — 타이밍 안전한 신호 접근</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-2-2-modport-드라이버-모니터-접근-제어">11.2.2 Modport — 드라이버/모니터 접근 제어</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-2-3-apb-인터페이스-설계-apb-if">11.2.3 APB 인터페이스 설계 (apb_if)</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-2-4-counter-if-vs-apb-if-비교">11.2.4 counter_if vs apb_if 비교</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-11-final.html#11-3-apb-slave-dut">11.3 APB Slave DUT</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-3-1-apb-slave-memory-rtl">11.3.1 APB Slave Memory RTL</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-3-2-apb-트랜잭션-정의-apb-seq-item">11.3.2 APB 트랜잭션 정의 (apb_seq_item)</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-3-3-tb-top-dut와-인터페이스-연결">11.3.3 tb_top — DUT와 인터페이스 연결</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-11-final.html#11-4-bus-functional-model-bfm-패턴">11.4 Bus Functional Model (BFM) 패턴</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-4-1-bfm이란-프로토콜-행위를-캡슐화">11.4.1 BFM이란? — 프로토콜 행위를 캡슐화</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-4-2-apb-master-driver-write-read-프로토콜-구현">11.4.2 APB Master Driver — Write/Read 프로토콜 구현</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-4-3-apb-monitor-프로토콜-관찰과-트랜잭션-추출">11.4.3 APB Monitor — 프로토콜 관찰과 트랜잭션 추출</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-4-4-counter-driver-vs-apb-driver-비교">11.4.4 counter_driver vs apb_driver 비교</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-11-final.html#11-5-apb-에이전트-조립">11.5 APB 에이전트 조립</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-5-1-apb-agent-드라이버-모니터-시퀀서-통합">11.5.1 apb_agent — 드라이버, 모니터, 시퀀서 통합</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-5-2-apb-env와-apb-base-test">11.5.2 apb_env와 apb_base_test</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-5-3-첫-apb-시뮬레이션-write-amp-read-테스트">11.5.3 첫 APB 시뮬레이션 — Write &amp; Read 테스트</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-11-final.html#11-6-실전-apb-write-read-검증">11.6 실전: APB Write/Read 검증</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-6-1-apb-시퀀스-다양한-시나리오">11.6.1 APB 시퀀스 — 다양한 시나리오</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-6-2-apb-스코어보드-메모리-모델-기반-비교">11.6.2 APB 스코어보드 — 메모리 모델 기반 비교</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-6-3-실행-결과와-커버리지-확인">11.6.3 실행 결과와 커버리지 확인</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-6-4-part-2-part-3-구조-비교표">11.6.4 Part 2 → Part 3 구조 비교표</a>
+<a href="#" class="nav-sub-item" data-src="final-chapters/chapter-11-final.html#11-7-체크포인트">11.7 체크포인트</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-7-1-셀프-체크">11.7.1 셀프 체크</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-7-2-연습문제">11.7.2 연습문제</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-7-3-이-챕터에서-배운-것">11.7.3 이 챕터에서 배운 것</a>
+<a href="#" class="nav-sub-item toc-sub" data-src="final-chapters/chapter-11-final.html#11-7-4-다음-장-미리보기">11.7.4 다음 장 미리보기</a>
